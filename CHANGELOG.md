@@ -4,6 +4,21 @@ All notable changes to this template are documented in this file. The format is
 based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 follows [Semantic Versioning](https://semver.org/).
 
+## [1.1.0] – 2026-10-15
+
+### Changed
+- The user guide is now a separate document, `template-guide.tex` (`template-guide.pdf`),
+  so `main.tex` contains only your thesis and compiles much faster.
+- `.latexmkrc` renamed to `latexmkrc` so that Overleaf uses it, and configured to avoid a
+  useless extra pdfLaTeX pass caused by biblatex's `.run.xml` file.
+- Microtypography is enabled only with the `final` option, and guidance boxes are no longer
+  breakable. A full compilation of the thesis now takes about a third of the time, to fit
+  within the 10-second limit of Overleaf's free plan.
+- `lipsum` is no longer loaded.
+
+### Added
+- Tips for keeping compilation time low on Overleaf.
+
 ## [1.0.0] – 2026-10-15
 
 First release, derived from the TFG template of Francisco Charte Ojeda for the

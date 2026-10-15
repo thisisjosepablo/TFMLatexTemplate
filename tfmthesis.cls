@@ -120,10 +120,17 @@
     {modern}{\setmainfont{Latin Modern Roman}\setsansfont{Latin Modern Sans}%
              \setmathfont{Latin Modern Math}}%
   }[\ClassError{tfmthesis}{Unknown font `\tfm@opt@font'}{Use serif, sans or modern.}]
+  % Bold mathematics (e.g. \boldmath, bold numbers in siunitx tables)
+  \IfStrEqCase{\tfm@opt@font}{%
+    {serif}{\setmathfont{TeX Gyre Termes Math}[version=bold, FakeBold=2]}%
+    {sans}{\setmathfont{Latin Modern Math}[version=bold, FakeBold=2]}%
+    {modern}{\setmathfont{Latin Modern Math}[version=bold, FakeBold=2]}}
   \setmonofont{Inconsolatazi4}[Extension=.otf, UprightFont=*-Regular,
     BoldFont=*-Bold, Scale=0.95]
 \fi
-\RequirePackage{microtype}
+% Microtypography (character protrusion and font expansion) gives the best-looking
+% paragraphs but slows down every compilation, so it is only enabled in final mode.
+\iftfm@opt@final\RequirePackage{microtype}\fi
 
 %% ---------------------------------------------------------------------------
 %%  3. Page layout
@@ -141,6 +148,9 @@
 \RequirePackage{emptypage} % blank pages in print mode carry no header/footer
 \widowpenalty=10000
 \clubpenalty=10000
+% Extra stretch for paragraphs that could not be justified otherwise, which
+% prevents lines from sticking out into the margin
+\setlength{\emergencystretch}{2.5em}
 \raggedbottom
 
 %% ---------------------------------------------------------------------------
@@ -185,7 +195,6 @@
 \RequirePackage{enumitem}
 \setlist{itemsep=0.2em, topsep=0.4em, parsep=0pt}
 \RequirePackage{csquotes}
-\RequirePackage{lipsum}
 \RequirePackage{pdfpages}
 \RequirePackage{ccicons}
 
@@ -243,7 +252,7 @@
   % In final mode every guidance box disappears from the PDF
   \excludecomment{guidance}
 \else
-  \newtcolorbox{guidance}{enhanced, breakable,
+  \newtcolorbox{guidance}{enhanced,
     colback=tfmaccent!4, colframe=tfmaccent!60, boxrule=0.6pt,
     leftrule=3pt, arc=1.5pt, left=8pt, right=8pt, top=4pt, bottom=4pt,
     fontupper=\small\setstretch{1.1}\setlength{\parindent}{0pt}\setlength{\parskip}{0.4em},
@@ -346,7 +355,10 @@
 \newtoggle{tfmLicencePage}\toggletrue{tfmLicencePage}
 \newtoggle{tfmApprovalPage}\togglefalse{tfmApprovalPage}
 \newtoggle{tfmOriginalityPage}\toggletrue{tfmOriginalityPage}
-\newtoggle{tfmTemplateGuide}\toggletrue{tfmTemplateGuide}
+% The user guide chapter is only included when compiling template-guide.tex,
+% which defines \TemplateGuide before loading main.tex
+\newtoggle{tfmTemplateGuide}
+\ifdefined\TemplateGuide\toggletrue{tfmTemplateGuide}\else\togglefalse{tfmTemplateGuide}\fi
 
 %% ---------------------------------------------------------------------------
 %%  8. Headings
@@ -706,7 +718,7 @@
 %% 16. Sustainable Development Goals (SDG) table helper
 %% ---------------------------------------------------------------------------
 % \sdg{number}{name}{level}  with level = H (high), M (medium), L (low), N (not applicable)
-\newcommand{\tfm@sdgmark}[2]{\ifstrequal{#1}{#2}{\textcolor{tfmaccent}{\boldmath$\checkmark$}}{}}
+\newcommand{\tfm@sdgmark}[2]{\ifstrequal{#1}{#2}{\textcolor{tfmaccent}{$\checkmark$}}{}}
 \newcommand{\sdg}[3]{\textbf{SDG #1.} #2 & \tfm@sdgmark{#3}{H} & \tfm@sdgmark{#3}{M}
   & \tfm@sdgmark{#3}{L} & \tfm@sdgmark{#3}{N}\\}
 

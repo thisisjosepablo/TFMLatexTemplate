@@ -2,9 +2,9 @@
 %% ===========================================================================
 %%  Using This Template
 %%  This chapter explains how to use the template and gives advice on how to
-%%  write a Master's thesis. Hide it by setting
-%%      \settoggle{tfmTemplateGuide}{false}
-%%  in config.tex: the rest of the chapters are renumbered automatically.
+%%  write a Master's thesis. It is only included when compiling
+%%  template-guide.tex (which produces template-guide.pdf); main.tex, your
+%%  thesis, leaves it out. You can delete this file if you do not need it.
 %% ===========================================================================
 \chapter{Using This Template}\label{ch:guide}
 
@@ -24,9 +24,9 @@ by Francisco Charte Ojeda for the Escuela Politécnica Superior de Jaén
 Boxes like this one contain guidance about what to write in each part of the thesis. They
 are only visible while you write: add the \texttt{final} option to the
 \texttt{\textbackslash documentclass} line of \texttt{main.tex} and all of them
-disappear from the PDF, together with the to-do notes. When you start writing your own
-thesis, hide this whole chapter by setting \texttt{tfmTemplateGuide} to \texttt{false} in
-\texttt{config.tex}.
+disappear from the PDF, together with the to-do notes. This chapter itself is not part of
+your thesis: it only appears when compiling \texttt{template-guide.tex}, the document you
+are reading, and never in \texttt{main.tex}.
 \end{guidance}
 
 \section{Before you start: your university's regulations}\label{sec:regulations}
@@ -72,7 +72,8 @@ and \texttt{references.bib}.
     \toprule
     \textnormal{\textbf{File or folder}} & \textbf{Purpose} \\
     \midrule
-    main.tex         & Main document: class options and order of the parts of the thesis. \\
+    main.tex         & Main document of your thesis: class options and order of its parts. \\
+    template-guide.tex & This user guide: your thesis plus this chapter. \\
     config.tex       & Your data: title, author, supervisors, university, logos, licence,
                        optional pages. \\
     tfmthesis.cls    & The class that defines the layout. You do not need to edit it. \\
@@ -84,6 +85,7 @@ and \texttt{references.bib}.
     tables/          & Long tables kept in separate files. \\
     references.bib   & Bibliographic references in BibLaTeX format. \\
     presets/         & Settings that reproduce the style of specific universities. \\
+    latexmkrc        & Compilation settings for \texttt{latexmk} and Overleaf. \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -199,6 +201,24 @@ latexmk -c                # removes the auxiliary files
 
 Overleaf, TeXstudio, VS Code with LaTeX Workshop and most editors detect all of this
 automatically. In Overleaf, keep the compiler set to pdfLaTeX (Menu~$\rightarrow$ Compiler).
+
+\paragraph{Compilation time on Overleaf} The free plan of Overleaf stops any compilation
+that takes longer than a few seconds, and a thesis grows quickly. The template is tuned to
+compile fast: the extra compilation passes that \texttt{latexmk} would otherwise run are
+avoided (file \texttt{latexmkrc}), and microtypography, which noticeably slows down
+every compilation, is only enabled with the \texttt{final} option. If your thesis starts to
+time out, the following tips help:
+\begin{itemize}
+  \item Leave out the chapters you are not working on: comment out their
+        \verb|\input| lines in \texttt{main.tex}. Cross-references to them will show
+        \enquote{??} until you include them again.
+  \item Use \enquote{Fast [draft]} compile mode in Overleaf (Menu~$\rightarrow$ Compile
+        mode), which skips images.
+  \item Keep figures as PDF or reasonably sized PNG/JPEG files: a 20~MB photograph
+        slows down every compilation.
+  \item Compile locally with \texttt{latexmk}, where there is no time limit, or ask your
+        university whether it provides Overleaf Professional accounts.
+\end{itemize}
 
 \section{Structuring the thesis}\label{sec:structuring}
 
@@ -351,8 +371,8 @@ chapter are produced by \texttt{figures/src/example\_figures.py}.
 \subsection{Inserting a figure}\label{sec:inserting-figures}
 
 Figures are inserted with \verb|\includegraphics| inside a \texttt{figure} environment, which
-also contains the \verb|\caption| and the \verb|\label|. Use widths relative to the text
-width, such as \texttt{width=0.8\textbackslash textwidth}. \Cref{lst:figure} produces
+also contains the \verb|\caption| and the \verb|\label|. Set the size of the image relative
+to the width of the text, e.g.\ \texttt{width=0.8\textbackslash textwidth}. \Cref{lst:figure} produces
 \cref{fig:learning-curves}.
 
 \begin{lstlisting}[language={[LaTeX]TeX}, caption={Inserting a figure.}, label=lst:figure]

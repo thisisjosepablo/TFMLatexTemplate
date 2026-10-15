@@ -10,7 +10,8 @@ Put your data in one file, pick a few options, and start writing.
 
 ![Preview of the template: cover, first chapter, figures and results](docs/preview.png)
 
-📄 **[See the example PDF](main.pdf)**. It is also the user guide of the template.
+📘 **[Read the user guide (PDF)](template-guide.pdf)**: a complete thesis built with the template that explains how to use it.<br>
+📄 **[See the empty thesis skeleton (PDF)](main.pdf)**: what you get when you start.
 
 ---
 
@@ -61,6 +62,11 @@ Put your data in one file, pick a few options, and start writing.
 2. Keep the compiler set to **pdfLaTeX** (Menu → Compiler).
 3. Edit `config.tex` and start writing.
 
+> **Overleaf free plan:** compilations are stopped after 10 seconds. The template is tuned to fit:
+> it avoids unnecessary compilation passes and enables the slower microtypography only with the
+> `final` option. As your thesis grows, see the tips in section 1.2.5 of the
+> [user guide](template-guide.pdf) if you hit the limit.
+
 ### On your computer
 
 You need a recent TeX distribution ([TeX Live](https://tug.org/texlive/) 2023 or newer, or
@@ -69,8 +75,9 @@ You need a recent TeX distribution ([TeX Live](https://tug.org/texlive/) 2023 or
 ```bash
 git clone https://github.com/thisisjosepablo/TFMLatexTemplate.git my-thesis
 cd my-thesis
-latexmk main.tex        # builds main.pdf
-latexmk -pvc main.tex   # rebuilds automatically while you write
+latexmk main.tex             # builds main.pdf, your thesis
+latexmk -pvc main.tex        # rebuilds automatically while you write
+latexmk template-guide.tex   # builds the user guide
 ```
 
 Better still, click **Use this template** at the top of this page to get your own repository with
@@ -96,9 +103,7 @@ Everything about you and your institution lives in **`config.tex`**:
 \settoggle{tfmApprovalPage}{true}       % optional pages on/off
 ```
 
-Leave any field empty and it disappears from the document. When you start writing your own
-thesis, set `\settoggle{tfmTemplateGuide}{false}` to hide the user guide chapter. The remaining
-chapters are renumbered automatically.
+Leave any field empty and it disappears from the document.
 
 ## Class options
 
@@ -125,7 +130,8 @@ spacing and 12 pt text. If yours differ, override them in `config.tex`, for exam
 ## Files
 
 ```text
-├── main.tex                 # class options and order of the parts
+├── main.tex                 # your thesis: class options and order of the parts
+├── template-guide.tex       # the user guide (your thesis + a "Using This Template" chapter)
 ├── config.tex               # ← your data
 ├── tfmthesis.cls            # the class (you do not need to edit it)
 ├── references.bib           # your references
@@ -134,7 +140,8 @@ spacing and 12 pt text. If yours differ, override them in `config.tex`, for exam
 ├── appendices/              # SDG alignment, supplementary material
 ├── figures/                 # images (logos/ and the scripts in src/)
 ├── tables/                  # long tables in separate files
-└── presets/                 # styles of specific universities
+├── presets/                 # styles of specific universities
+└── latexmkrc                # compilation settings (also used by Overleaf)
 ```
 
 ## University presets
@@ -185,7 +192,7 @@ También ofrece:
 - recuadros de ayuda que desaparecen en la versión final;
 - versión digital o para imprimir.
 
-Ábrela directamente en Overleaf con el botón de arriba y lee el capítulo *Using This Template*
-del [PDF de ejemplo](main.pdf). Está basada en la plantilla de TFG de
+Ábrela directamente en Overleaf con el botón de arriba y consulta la
+[guía de uso en PDF](template-guide.pdf). Está basada en la plantilla de TFG de
 [Francisco Charte Ojeda](https://github.com/fcharte/TFGLatexTemplate) para la EPSJ (Universidad
 de Jaén). Revisa siempre la normativa de tu universidad y de tu máster.

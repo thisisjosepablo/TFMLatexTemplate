@@ -1,10 +1,13 @@
 # Convenience targets (require latexmk, included in TeX Live and MiKTeX)
-.PHONY: all pdf lua watch final review figures clean distclean
+.PHONY: all pdf guide lua watch final review figures clean distclean
 
 all: pdf
 
 pdf:            ## Build main.pdf with pdfLaTeX + Biber
 	latexmk main.tex
+
+guide:          ## Build template-guide.pdf (the user guide of the template)
+	latexmk template-guide.tex
 
 lua:            ## Build main.pdf with LuaLaTeX + Biber
 	latexmk -lualatex main.tex
@@ -22,7 +25,7 @@ figures:        ## Regenerate the example figures (needs numpy and matplotlib)
 	python3 figures/src/example_figures.py
 
 clean:          ## Remove auxiliary files
-	latexmk -c
+	latexmk -c main.tex template-guide.tex
 
-distclean:      ## Remove auxiliary files and the PDF
-	latexmk -C
+distclean:      ## Remove auxiliary files and the PDFs
+	latexmk -C main.tex template-guide.tex
