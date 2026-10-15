@@ -1,0 +1,98 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  # Compile the template with many option combinations so that no change
+  # breaks any of them.
+  test:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: default (pdfLaTeX)
+            options: "font=serif, secondlanguage=spanish, bibstyle=numeric-comp"
+            lua: false
+          - name: print, sans, Catalan, IEEE, final
+            options: "print, final, font=sans, secondlanguage=catalan, bibstyle=ieee"
+            lua: false
+          - name: review, modern, Galician, APA
+            options: "review, font=modern, secondlanguage=galician, bibstyle=apa"
+            lua: false
+          - name: Basque, author-year, American, uppercase, 11pt
+            options: "secondlanguage=basque, bibstyle=authoryear, english=american, uppercase, 11pt"
+            lua: false
+          - name: Valencian / no second language
+            options: "secondlanguage=none, final"
+            lua: false
+          - name: LuaLaTeX serif
+            options: "font=serif"
+            lua: true
+          - name: LuaLaTeX sans, Catalan, review
+            options: "font=sans, secondlanguage=catalan, review"
+            lua: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set class options
+        run: |
+          python3 - <<'PY'
+          import re
+          s = open("main.tex", encoding="utf-8").read()
+          s = re.sub(r"\\documentclass\[.*?\]\{tfmthesis\}",
+                     lambda m: "\\documentclass[${{ matrix.options }}]{tfmthesis}", s, flags=re.S)
+          open("main.tex", "w", encoding="utf-8").write(s)
+          PY
+          grep -A1 documentclass main.tex
+      - name: Compile
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          latexmk_use_lualatex: ${{ matrix.lua }}
+      - name: Check for undefined references and overfull boxes
+        run: |
+          if grep -E "There were undefined references|Citation .* undefined" main.log; then
+            echo "::error::Undefined references or citations"; exit 1
+          fi
+          grep -E "Overfull" main.log && echo "::warning::Overfull boxes found" || true
+
+  # Build the reference PDF and an Overleaf-ready ZIP; attach both to releases.
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile main.pdf
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+      - name: Package the template
+        run: |
+          zip -r TFMLatexTemplate.zip \
+            main.tex config.tex tfmthesis.cls references.bib .latexmkrc Makefile \
+            LICENSE README.md frontmatter chapters appendices figures tables presets \
+            -x "*.aux" "*.log"
+          unzip -l TFMLatexTemplate.zip | tail -1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: TFMLatexTemplate
+          path: |
+            main.pdf
+            TFMLatexTemplate.zip
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            main.pdf
+            TFMLatexTemplate.zip
+          generate_release_notes: true

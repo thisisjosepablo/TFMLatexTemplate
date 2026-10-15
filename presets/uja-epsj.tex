@@ -1,0 +1,31 @@
+% !TeX root = ../main.tex
+%% ===========================================================================
+%%  Preset: Universidad de Jaén -- Escuela Politécnica Superior de Jaén (EPSJ)
+%% ---------------------------------------------------------------------------
+%%  Reproduces the style rules of the original template by Francisco Charte
+%%  Ojeda (https://github.com/fcharte/TFGLatexTemplate), written for the EPSJ
+%%  style guidelines: A4, 2.5 cm margins, 1.5 line spacing, first-line
+%%  indentation, Arial 12 pt, header with the student's name and the thesis
+%%  title, footer with the school's name and the page number.
+%%
+%%  Those guidelines were written for Bachelor's theses (TFG): check the
+%%  specific rules of your Master's programme before relying on them.
+%%
+%%  How to use it:
+%%    1. In main.tex, use the class options:  font=sans, uppercase
+%%    2. At the top of config.tex add:        \input{presets/uja-epsj}
+%% ===========================================================================
+\University{Universidad de Jaén}
+\Faculty{Escuela Politécnica Superior de Jaén}
+\City{Jaén}
+\FooterText{Escuela Politécnica Superior de Jaén}
+% Orange of the EPSJ cover used in the original template
+\definecolor{tfmaccent}{RGB}{198,97,21}
+
+% Header: student's name and short title. Footer: school and page number.
+\fancyhf{}
+\fancyhead[LE,LO]{\footnotesize\color{tfmgray}\thesisauthor}
+\fancyhead[RE,RO]{\footnotesize\color{tfmgray}\thesisshorttitle}
+\fancyfoot[LE,LO]{\footnotesize\color{tfmgray}Escuela Politécnica Superior de Jaén}
+\fancyfoot[RE,RO]{\small\thepage}
+\renewcommand{\footrulewidth}{1pt}

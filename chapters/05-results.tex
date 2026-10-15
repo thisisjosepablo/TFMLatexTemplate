@@ -1,0 +1,49 @@
+% !TeX root = ../main.tex
+\chapter{Results}\label{ch:results}
+
+\begin{guidance}
+Report all the results obtained by applying the methods to the materials, usually in
+tables and figures, in the same order as the experiments were described in
+\cref{ch:methods}. Describe what the results show objectively, without interpreting them
+yet: the interpretation belongs to \cref{ch:discussion} (some theses merge both chapters
+into a single \enquote{Results and Discussion} chapter). Whenever possible, compare
+different methods and include measures of dispersion and statistical significance.
+\end{guidance}
+
+\section{[First experiment]}\label{sec:experiment-1}
+
+[Results of the first experiment. \Cref{tab:results} shows an example of a results table
+with numbers aligned on the decimal point using \texttt{siunitx}; the best result of each
+column is highlighted in bold.]
+
+\begin{table}[htbp]
+  \centering
+  \caption{Example of a results table: mean $\pm$ standard deviation over 10 runs. The
+  best value of each column is shown in bold.}
+  \label{tab:results}
+  % The \pm sign is placed between two S columns with @{...}, so that both the
+  % means and the standard deviations are aligned on the decimal point
+  \begin{tabular}{@{}l S[table-format=1.3]@{\,\(\pm\)\,} S[table-format=1.3]
+                     S[table-format=1.3]@{\,\(\pm\)\,} S[table-format=1.3]
+                     S[table-format=3.1]@{}}
+    \toprule
+    \textbf{Method} & \multicolumn{2}{c}{\textbf{Accuracy}} & \multicolumn{2}{c}{\textbf{F1 score}}
+      & {\textbf{Time (s)}} \\
+    \midrule
+    Baseline        & 0.812 & 0.014 & 0.774 & 0.019 & 12.4 \\
+    Method A        & 0.845 & 0.011 & 0.801 & 0.016 & 48.9 \\
+    Method B        & 0.851 & 0.009 & 0.815 & 0.012 & 103.2 \\
+    Proposed method & \bfseries 0.873 & \bfseries 0.008 & \bfseries 0.842 & \bfseries 0.010
+      & 61.7 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{[Second experiment]}\label{sec:experiment-2}
+
+[Results of the second experiment.]
+
+\section{Comparison with the state of the art}\label{sec:comparison}
+
+[Compare your results with those published in the literature reviewed in
+\cref{ch:background}.]

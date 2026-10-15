@@ -1,0 +1,103 @@
+% !TeX root = main.tex
+%% ===========================================================================
+%%  config.tex -- YOUR DATA GOES HERE
+%% ---------------------------------------------------------------------------
+%%  Fill in every field below. Leave a field empty, e.g. \ThesisSubtitle{},
+%%  and it simply disappears from the cover and the other pages.
+%%  Use the official names of your university, school and degree exactly as
+%%  they appear in your university's regulations (an official English name
+%%  is usually published on the degree's web page).
+%% ===========================================================================
+
+% Optional: start from the style of a specific university (see presets/).
+% Your own settings below take precedence over the preset.
+% \input{presets/uja-epsj}
+
+%% --- The thesis --------------------------------------------------------------
+% Full title: it must match the title of the approved thesis proposal
+\ThesisTitle{Title of Your Master's Thesis, Exactly as in the Approved Proposal}
+% Optional subtitle
+\ThesisSubtitle{An optional subtitle that adds context}
+% Short title for the page headers (defaults to the full title if empty)
+\ThesisShortTitle{Short title for the page headers}
+% Title in the second language (Spanish, Catalan, Galician, Basque...).
+% Most universities require it when the thesis is written in English.
+\ThesisTitleSecondLanguage{[Title of the thesis in the second language]}
+% Kind of work. Change it if your university uses another English name
+\ThesisType{Master's Thesis}
+% Name of the work in the second language. The default depends on the
+% secondlanguage class option (e.g. "Trabajo Fin de Máster" for spanish).
+% Uncomment to override it, or leave it empty to hide it on the cover:
+% \ThesisTypeSecondLanguage{Trabajo Fin de Máster}
+
+%% --- The author -------------------------------------------------------------
+\ThesisAuthor{First-name Surname1 Surname2}
+\AuthorEmail{student@university.es}      % optional, shown on the licence page
+\AuthorIDNumber{}                        % optional (DNI/NIE) for the declarations
+
+%% --- Supervisors ------------------------------------------------------------
+% \Supervisor[Role shown on the cover]{Full name}{Affiliation}
+% Repeat the command for every supervisor (co-supervisors, external
+% supervisors from a company, etc.). The role defaults to "Supervisor".
+\Supervisor{Dr. First-name Surname}{Department of Computer Science, University Name}
+\Supervisor[Co-supervisor]{Dr. First-name Surname}{Research Institute or Company}
+
+%% --- Institution and degree -------------------------------------------------
+\University{Universidad de [University Name]}
+\Faculty{[School or Faculty Name]}
+\Department{[Department of the supervisor]}
+\Degree{Master's Degree in [Name of the Master's Programme]}
+\City{[City]}
+\AcademicYear{2025/2026}
+% Submission date as it should be printed. \today prints the compilation date.
+\SubmissionDate{June 2026}
+% Optional: defence session ("Ordinary session", "July 2026", ...)
+\DefenceSession{}
+
+%% --- Keywords ---------------------------------------------------------------
+% Usually 3 to 6, separated by semicolons
+\Keywords{Master's thesis; LaTeX; template; Spanish universities; reproducibility}
+\KeywordsSecondLanguage{[keyword 1; keyword 2; keyword 3]}
+
+%% --- Logos and cover --------------------------------------------------------
+% Put your logos in figures/logos/. While the file does not exist, a neutral
+% placeholder is drawn instead. Vector formats (PDF, EPS) look best.
+% Download the logo from your university's corporate identity web page.
+\UniversityLogo{figures/logos/university-logo.pdf}
+\SecondaryLogo{}                     % e.g. school/faculty logo (optional)
+% If your university provides an OFFICIAL COVER as a PDF (filled in with your
+% data), point to it here: it becomes page 1 and the generated cover follows
+% as the title page. Leave it empty to use only the generated cover.
+\OfficialCover{}
+
+%% --- Colours -----------------------------------------------------------------
+% Accent colour of the cover, headings, captions and links. Use the corporate
+% colour of your university if you like (any HTML hex code works).
+\definecolor{tfmaccent}{HTML}{1F4E79}
+
+%% --- Licence -----------------------------------------------------------------
+% all-rights-reserved | by | by-sa | by-nc | by-nc-sa | by-nd | by-nc-nd
+% Institutional repositories in Spain often suggest by-nc-nd. Check yours.
+\ThesisLicence{by-nc-nd}
+
+%% --- Optional pages ----------------------------------------------------------
+% true = include the page, false = leave it out
+\settoggle{tfmLicencePage}{true}      % copyright / Creative Commons notice
+\settoggle{tfmApprovalPage}{true}     % supervisors' approval for the defence
+\settoggle{tfmOriginalityPage}{true}  % declaration of originality / authorship
+\settoggle{tfmTemplateGuide}{true}    % the "Using This Template" chapter.
+                                      % Set it to false when you start writing!
+
+%% --- Footer ------------------------------------------------------------------
+% Text in the footer of every page (defaults to the university name)
+% \FooterText{Faculty of Sciences -- University Name}
+
+%% --- Layout overrides (only if your regulations demand something else) --------
+% The defaults are: A4, 2.5 cm margins (3 cm inner margin in print mode),
+% 1.5 line spacing, 12 pt text, first-line indentation.
+% \geometry{top=3cm, bottom=3cm, left=3cm, right=2.5cm}
+% \setstretch{1.25}
+% \setlength{\parindent}{0pt}
+% \setlength{\parskip}{0.8em}
+% Headers and footers can be redefined with fancyhdr, e.g.:
+% \fancyhead[L]{\footnotesize\color{tfmgray}\thesisauthor}

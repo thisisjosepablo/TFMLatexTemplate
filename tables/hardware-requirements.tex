@@ -1,0 +1,23 @@
+% !TeX root = ../main.tex
+% Tables can live in their own files and be included with \input{tables/name}
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{Hardware requirements of the computer on which the system will be installed.}
+  \label{tab:hardware}
+  \begin{tabularx}{\textwidth}{@{}l l X@{}}
+    \toprule
+    \textbf{Component} & \textbf{Specification} & \textbf{Description} \\
+    \midrule
+    Processor & x86-64 architecture & Latest-generation multi-core processor, able to run
+      the containers that make up the system in parallel \\
+    RAM       & \SI{64}{\giga\byte} & Enough memory is essential for the system to work
+      correctly \\
+    Storage   & \SI{10}{\tera\byte} & Mass storage for the images, videos, AI models and
+      other elements of the system; at least \num{7200} rpm is recommended \\
+    \gls{gpu} & CUDA CC $\geq$ 3.5 & \gls{gpu} with CUDA Compute Capability 3.5 or later and at
+      least \SI{8}{\giga\byte} of memory to run the AI models \\
+    Network   & Gigabit Ethernet & Access to external data sources and content sharing \\
+    \bottomrule
+  \end{tabularx}
+\end{table}

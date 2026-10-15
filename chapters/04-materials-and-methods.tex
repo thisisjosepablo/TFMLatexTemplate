@@ -1,0 +1,75 @@
+% !TeX root = ../main.tex
+\chapter{Materials and Methods}\label{ch:methods}
+
+\begin{guidance}
+Describe, in enough detail for another person to reproduce your work, the
+\emph{materials} (data, participants, equipment, software) and the \emph{methods}
+(techniques, algorithms, experimental design, evaluation) used to achieve the objectives.
+Justify every choice. Explain how the data were obtained and prepared, which
+techniques were used and why, how the experiments were run (hardware and software
+configuration) and how the results were evaluated. If your work involves people or
+personal data, the ethical and legal section is mandatory.
+\end{guidance}
+
+\section{Work plan}\label{sec:work-plan}
+
+[Describe the methodology followed to organise the work and its time plan.
+\Cref{fig:gantt} shows an example of a Gantt chart drawn with the \texttt{pgfgantt}
+package.]
+
+\begin{figure}[htbp]
+  \centering
+  \small
+  \begin{ganttchart}[
+      hgrid={*1{draw=black!10}}, vgrid={*1{draw=black!10}}, x unit=0.42cm, y unit chart=0.55cm,
+      title height=1, bar height=0.55, bar top shift=0.22,
+      bar/.append style={fill=tfmaccent!65, draw=tfmaccent},
+      milestone/.append style={fill=tfmaccent!90!black},
+      title label font=\scriptsize, bar label font=\footnotesize,
+      milestone label font=\footnotesize\itshape]{1}{24}
+    \gantttitle{Weeks}{24}\\
+    \gantttitlelist{1,...,24}{1}\\
+    \ganttbar{Literature review}{1}{5}\\
+    \ganttbar{Data collection and preparation}{4}{9}\\
+    \ganttbar{Method design and implementation}{8}{16}\\
+    \ganttbar{Experiments and evaluation}{14}{20}\\
+    \ganttbar{Writing the thesis}{12}{23}\\
+    \ganttmilestone{Submission}{23}
+  \end{ganttchart}
+  \caption{Example time plan of the thesis.}
+  \label{fig:gantt}
+\end{figure}
+
+\section{Data}\label{sec:data}
+
+[Source of the data, description (size, variables, classes, period), quality issues and
+pre-processing. A table describing the variables is usually helpful.]
+
+\section{Methods}\label{sec:methods}
+
+[Techniques and algorithms used, with references and the justification of the choice.]
+
+\section{Experimental setup}\label{sec:setup}
+
+[Hardware and software configuration, hyperparameters, random seeds, validation
+strategy. \Cref{tab:hardware} is an example of a hardware requirements table.]
+
+\input{tables/hardware-requirements}
+
+\section{Evaluation}\label{sec:evaluation}
+
+[Metrics, baselines, statistical tests and how the results are compared.]
+
+\section{Ethical and legal considerations}\label{sec:ethics}
+
+[If the work uses personal data, describe how the \gls{gdpr}~\cite{gdpr2016} and the
+Spanish Organic Law 3/2018 on the Protection of Personal Data and Guarantee of Digital
+Rights~\cite{lopdgdd2018} have been complied with: anonymisation or pseudonymisation,
+legal basis, informed consent, storage and access. Mention the approval of the ethics
+committee, if needed, with its reference number.]
+
+\section{Reproducibility}\label{sec:reproducibility}
+
+[State where the code and, if possible, the data can be found (a public repository with a
+\gls{doi}, e.g.\ on Zenodo), the software versions used~\cite{pedregosa2011scikit} and any
+restriction on data access.]
