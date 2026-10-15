@@ -15,7 +15,7 @@ names, colours, headers and footers, margins, spacing, etc.
 
 | File | University / school | Notes |
 |------|---------------------|-------|
-| `uja-epsj.tex` | Universidad de Jaén – Escuela Politécnica Superior de Jaén | Style of the original TFG template by F. Charte. Options: `font=sans, uppercase`. |
+| `uja-epsj.tex` | Universidad de Jaén – Escuela Politécnica Superior de Jaén | Style of the original TFG template by F. Charte. Option: `uppercase`. |
 
 ## Contributing a preset
 

@@ -9,16 +9,21 @@
 \chapter{Using This Template}\label{ch:guide}
 
 This chapter explains how to use this \LaTeX{} template to write a Master's thesis
-(\textit{\gls{tfm}}) in English at a Spanish university. The template is designed for
-\texttt{pdflatex}, the most widely used \LaTeX{} compiler, together with \texttt{biber} for
-the bibliography, and it also works with \texttt{lualatex}.
+(\textit{Trabajo Fin de Máster}, TFM) in English at a Spanish university. The template is
+designed for \texttt{pdflatex}, the most widely used \LaTeX{} compiler, together with BibTeX
+for the bibliography.
 
 You can compile the sources with a local \LaTeX{} distribution, such as TeX Live
 (\url{https://tug.org/texlive/}) or MiKTeX (\url{https://miktex.org/}), or online with
 Overleaf (\url{https://www.overleaf.com}), which needs no installation. The template is an
 English, Master's-level and university-independent adaptation of the TFG template created
 by Francisco Charte Ojeda for the Escuela Politécnica Superior de Jaén
-(\url{https://github.com/fcharte/TFGLatexTemplate}).
+(\url{https://github.com/fcharte/TFGLatexTemplate}). To keep it simple and fast to compile,
+it uses exactly the same packages as that template: \texttt{babel}, \texttt{inputenc},
+\texttt{fontenc}, \texttt{geometry}, \texttt{setspace}, \texttt{fancyhdr}, \texttt{helvet},
+\texttt{wallpaper}, \texttt{textpos}, \texttt{etoolbox}, \texttt{natbib}, \texttt{csquotes},
+\texttt{hyperref}, \texttt{booktabs}, \texttt{algorithm2e}, \texttt{listings} and
+\texttt{xcolor}.
 
 \begin{guidance}
 Boxes like this one contain guidance about what to write in each part of the thesis. They
@@ -32,12 +37,12 @@ are reading, and never in \texttt{main.tex}.
 \section{Before you start: your university's regulations}\label{sec:regulations}
 
 In Spain, Master's degrees are regulated by Royal Decree 822/2021~\cite{rd822-2021}, which
-establishes that every Master's degree ends with a thesis worth between 6 and 30
-\gls{ects} credits that must be defended in public. Beyond that common framework, each
-university, and often each school or Master's programme, sets its own rules: length,
-structure, formatting, the language in which the thesis can be written, whether an abstract
-in Spanish or in a co-official language is required, the declarations that must be signed,
-and how the thesis is submitted and archived.
+establishes that every Master's degree ends with a thesis worth between 6 and 30 ECTS
+credits that must be defended in public. Beyond that common framework, each university, and
+often each school or Master's programme, sets its own rules: length, structure, formatting,
+the language in which the thesis can be written, whether an abstract in Spanish or in a
+co-official language is required, the declarations that must be signed, and how the thesis
+is submitted and archived.
 
 This template implements the requirements that are most common across Spanish public
 universities and lets you adapt the rest. Before writing, read the regulations of your
@@ -51,7 +56,8 @@ university and your Master's programme, and check in particular:
         \texttt{\textbackslash OfficialCover}) and which logos may appear;
   \item the \emph{formatting} rules: margins, typeface, size and line spacing;
   \item the \emph{declarations} required: originality, supervisor's approval, use of
-        generative artificial intelligence, alignment with the \glspl{sdg};
+        generative artificial intelligence, alignment with the Sustainable Development
+        Goals;
   \item the \emph{maximum length} and the citation style expected in your field.
 \end{itemize}
 
@@ -59,42 +65,45 @@ university and your Master's programme, and check in particular:
 
 \subsection{Files of the template}\label{sec:files}
 
-\Cref{tab:files} describes the files and folders of the template. In most cases you only
+\autoref{tab:files} describes the files and folders of the template. In most cases you only
 need to edit \texttt{config.tex}, the files in \texttt{frontmatter/} and \texttt{chapters/},
 and \texttt{references.bib}.
 
-\begin{table}[htbp]
+\begin{table}[ht!]
   \centering
   \small
   \caption{Files and folders of the template.}
   \label{tab:files}
-  \begin{tabularx}{\textwidth}{@{}>{\ttfamily}l L@{}}
+  \begin{tabular}{@{}l p{10.6cm}@{}}
     \toprule
-    \textnormal{\textbf{File or folder}} & \textbf{Purpose} \\
+    \textbf{File or folder} & \textbf{Purpose} \\
     \midrule
-    main.tex         & Main document of your thesis: class options and order of its parts. \\
-    template-guide.tex & This user guide: your thesis plus this chapter. \\
-    config.tex       & Your data: title, author, supervisors, university, logos, licence,
-                       optional pages. \\
-    tfmthesis.cls    & The class that defines the layout. You do not need to edit it. \\
-    frontmatter/     & Dedication, acknowledgements, abstracts, AI statement and acronyms. \\
-    chapters/        & One file per chapter. \\
-    appendices/      & One file per appendix. \\
-    figures/         & Images and plots (\texttt{figures/src/} holds the scripts that
-                       generate them, \texttt{figures/logos/} the logos). \\
-    tables/          & Long tables kept in separate files. \\
-    references.bib   & Bibliographic references in BibLaTeX format. \\
-    presets/         & Settings that reproduce the style of specific universities. \\
-    latexmkrc        & Compilation settings for \texttt{latexmk} and Overleaf. \\
+    \texttt{main.tex}           & \raggedright Main document of your thesis: class options and order of
+                                  its parts. \tabularnewline
+    \texttt{template-guide.tex} & \raggedright This user guide: your thesis plus this chapter. \tabularnewline
+    \texttt{config.tex}         & \raggedright Your data: title, author, supervisors, university, logos,
+                                  licence, optional pages. \tabularnewline
+    \texttt{tfmthesis.cls}      & \raggedright The class that defines the layout. You do not need to
+                                  edit it. \tabularnewline
+    \texttt{frontmatter/}       & \raggedright Dedication, acknowledgements, abstracts, AI statement and
+                                  list of acronyms. \tabularnewline
+    \texttt{chapters/}          & \raggedright One file per chapter. \tabularnewline
+    \texttt{appendices/}        & \raggedright One file per appendix. \tabularnewline
+    \texttt{figures/}           & \raggedright Images and plots (\texttt{figures/src/} holds the scripts
+                                  that generate them, \texttt{figures/logos/} the logos). \tabularnewline
+    \texttt{tables/}            & \raggedright Long tables kept in separate files. \tabularnewline
+    \texttt{references.bib}     & \raggedright Bibliographic references in BibTeX format. \tabularnewline
+    \texttt{presets/}           & \raggedright Settings that reproduce the style of specific
+                                  universities. \tabularnewline
     \bottomrule
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 \subsection{Setting your data}\label{sec:config}
 
 Open \texttt{config.tex} and fill in your data, following the comments in the file.
-\Cref{lst:config} shows its most important fields. These data are used automatically on the
-cover, on the declarations, in the page headers and in the metadata of the PDF file.
+\autoref{lst:config} shows its most important fields. These data are used automatically on
+the cover, on the declarations, in the page headers and in the metadata of the PDF file.
 
 \begin{lstlisting}[language={[LaTeX]TeX}, caption={Main fields of \texttt{config.tex}.}, label=lst:config]
 \ThesisTitle{Title of Your Master's Thesis}
@@ -119,104 +128,111 @@ text you can reuse these data with \texttt{\textbackslash thesistitle},
 \texttt{\textbackslash thesisauthor}, \texttt{\textbackslash thesisdegree},
 \texttt{\textbackslash thesisuniversity} and \texttt{\textbackslash thesissupervisors}.
 
+If your university provides an official cover as a PDF file, already filled in with your
+data, set \texttt{\textbackslash OfficialCover\{file.pdf\}}: it becomes the first page of
+the thesis, as in the original template, and the generated cover follows it as the title
+page.
+
 \subsection{Class options}\label{sec:options}
 
-The appearance of the document is controlled with the options of the
-\texttt{\textbackslash documentclass} command in \texttt{main.tex}, summarised in
-\cref{tab:options}. For example, the final version of a thesis written in a sans-serif
-typeface, to be printed, with the abstract also in Catalan and references in APA style,
+\autoref{tab:options} summarises the class options, which control the appearance of the
+document. They are written in square brackets in the first command of \texttt{main.tex},
+\texttt{\textbackslash documentclass}. For example, the final version of a thesis written in a serif
+typeface, to be printed, with the abstract also in Catalan and author--year citations,
 would start with:
 
 \begin{lstlisting}[language={[LaTeX]TeX}, caption={Example of class options.}, label=lst:options]
-\documentclass[print, final, font=sans, secondlanguage=catalan,
-               bibstyle=apa]{tfmthesis}
+\documentclass[print, final, font=serif, secondlanguage=catalan,
+               bibstyle=authoryear]{tfmthesis}
 \end{lstlisting}
 
-\begin{table}[htbp]
+\begin{table}[ht!]
   \centering
   \small
   \caption{Options of the \texttt{tfmthesis} class. Default values are shown in bold.}
   \label{tab:options}
-  \begin{tabularx}{\textwidth}{@{}>{\ttfamily}l L@{}}
+  \begin{tabular}{@{}l p{10.6cm}@{}}
     \toprule
-    \textnormal{\textbf{Option}} & \textbf{Effect} \\
+    \textbf{Option} & \textbf{Effect} \\
     \midrule
-    print          & Two-sided layout for a printed and bound copy: wider inner margin,
-                     chapters start on odd pages and links are black. Without it the
-                     document is optimised for the screen (\textbf{digital}). \\
-    final          & Hides the guidance boxes and the to-do notes. \\
-    review         & Adds line numbers and a \enquote{DRAFT} watermark, so that your
-                     supervisors can refer to specific lines in their comments. \\
-    font=          & \textbf{\texttt{serif}} (Times-like), \texttt{sans} (Helvetica/Arial-like)
-                     or \texttt{modern} (Latin Modern, the classic \LaTeX{} look). \\
-    secondlanguage=& Language of the second abstract: \textbf{\texttt{spanish}},
-                     \texttt{catalan}, \texttt{valencian}, \texttt{galician},
-                     \texttt{basque} or \texttt{none}. \\
-    bibstyle=      & Any BibLaTeX style: \textbf{\texttt{numeric-comp}}, \texttt{ieee},
-                     \texttt{apa}, \texttt{authoryear}, \texttt{nature}\dots \\
-    english=       & \textbf{\texttt{british}} or \texttt{american} spelling and hyphenation. \\
-    uppercase      & Chapter titles in capital letters. \\
-    11pt           & Smaller body text (\textbf{12pt} by default). \\
+    \texttt{print}           & \raggedright Two-sided layout for a printed and bound copy: wider inner
+                               margin, chapters start on odd pages and links are black.
+                               Without it the document is optimised for the screen. \tabularnewline
+    \texttt{final}           & \raggedright Hides the guidance boxes and the to-do notes. \tabularnewline
+    \texttt{font=}           & \raggedright \textbf{\texttt{sans}} (Helvetica, which has the same
+                               metrics as Arial) or \texttt{serif} (Computer Modern, the
+                               classic \LaTeX{} typeface). \tabularnewline
+    \texttt{secondlanguage=} & \raggedright Language of the second abstract: \textbf{\texttt{spanish}},
+                               \texttt{catalan}, \texttt{valencian}, \texttt{galician},
+                               \texttt{basque} or \texttt{none}. \tabularnewline
+    \texttt{bibstyle=}       & \raggedright Citations: \textbf{\texttt{numeric}} ([1], references in
+                               order of citation) or \texttt{authoryear} ((Author, 2024),
+                               references in alphabetical order). \tabularnewline
+    \texttt{english=}        & \raggedright \textbf{\texttt{british}} or \texttt{american} spelling and
+                               hyphenation. \tabularnewline
+    \texttt{uppercase}       & \raggedright Chapter titles in capital letters. \tabularnewline
+    \texttt{11pt}            & \raggedright Smaller body text (\textbf{12pt} by default). \tabularnewline
     \bottomrule
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 \subsection{Optional pages}\label{sec:optional-pages}
 
-\Cref{tab:optional-pages} lists the optional pages of the front matter and how to include or
-remove them. The order in which they appear is set in \texttt{main.tex}.
+\autoref{tab:optional-pages} lists the optional pages of the front matter and how to include
+or remove them. The order in which they appear is set in \texttt{main.tex}.
 
-\begin{table}[htbp]
+\begin{table}[ht!]
   \centering
   \small
   \caption{Optional pages of the front matter.}
   \label{tab:optional-pages}
-  \begin{tabularx}{\textwidth}{@{}l L@{}}
+  \begin{tabular}{@{}p{5.2cm} p{9.6cm}@{}}
     \toprule
     \textbf{Page} & \textbf{How to control it} \\
     \midrule
-    Official cover          & \texttt{\textbackslash OfficialCover\{file.pdf\}} in \texttt{config.tex} \\
-    Licence / copyright     & Toggle \texttt{tfmLicencePage}; licence chosen with
-                              \texttt{\textbackslash ThesisLicence} \\
-    Supervisor's approval   & Toggle \texttt{tfmApprovalPage} \\
-    Declaration of originality & Toggle \texttt{tfmOriginalityPage} \\
-    Dedication, AI statement, abstracts & Comment out their \texttt{\textbackslash input}
-                              line in \texttt{main.tex} \\
-    Lists of figures, tables, algorithms, listings and acronyms & Comment out the
-                              corresponding line in \texttt{main.tex} \\
+    Official cover             & \raggedright \texttt{\textbackslash OfficialCover\{file.pdf\}} in
+                                 \texttt{config.tex} \tabularnewline
+    Licence / copyright        & \raggedright Toggle \texttt{tfmLicencePage}; licence chosen with
+                                 \texttt{\textbackslash ThesisLicence} \tabularnewline
+    Supervisor's approval      & \raggedright Toggle \texttt{tfmApprovalPage} \tabularnewline
+    Declaration of originality & \raggedright Toggle \texttt{tfmOriginalityPage} \tabularnewline
+    \raggedright Dedication, AI statement, abstracts, list of acronyms
+                               & \raggedright Comment out their \texttt{\textbackslash input} line in
+                                 \texttt{main.tex} \tabularnewline
+    \raggedright Lists of figures, tables, algorithms and listings
+                               & \raggedright Comment out or uncomment the corresponding line in
+                                 \texttt{main.tex} \tabularnewline
     \bottomrule
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 \subsection{Compiling the document}\label{sec:compiling}
 
-The bibliography is processed with \texttt{biber}, so a full compilation needs several
-steps. The simplest way is to let \texttt{latexmk} run them for you:
+The bibliography is processed with BibTeX, so a full compilation needs several steps. The
+simplest way is to let \texttt{latexmk} run them for you:
 
 \begin{lstlisting}[language=bash, caption={Compiling the thesis from the command line.}, label=lst:compile]
-latexmk main.tex          # builds main.pdf (pdfLaTeX + Biber)
-latexmk -pvc main.tex     # recompiles automatically whenever a file changes
-latexmk -c                # removes the auxiliary files
+latexmk -pdf main.tex          # builds main.pdf (pdfLaTeX + BibTeX)
+latexmk -pdf -pvc main.tex     # recompiles automatically whenever a file changes
+latexmk -c                     # removes the auxiliary files
 \end{lstlisting}
 
 Overleaf, TeXstudio, VS Code with LaTeX Workshop and most editors detect all of this
-automatically. In Overleaf, keep the compiler set to pdfLaTeX (Menu~$\rightarrow$ Compiler).
+automatically. In Overleaf, keep the compiler set to pdfLaTeX (Menu~$\rightarrow$
+Compiler).
 
-\paragraph{Compilation time on Overleaf} The free plan of Overleaf stops any compilation
-that takes longer than a few seconds, and a thesis grows quickly. The template is tuned to
-compile fast: the extra compilation passes that \texttt{latexmk} would otherwise run are
-avoided (file \texttt{latexmkrc}), and microtypography, which noticeably slows down
-every compilation, is only enabled with the \texttt{final} option. If your thesis starts to
-time out, the following tips help:
+The free plan of Overleaf stops any compilation that takes longer than a few seconds. The
+template has been kept light for this reason, but a thesis grows quickly. If yours starts to
+time out:
+
 \begin{itemize}
-  \item Leave out the chapters you are not working on: comment out their
-        \verb|\input| lines in \texttt{main.tex}. Cross-references to them will show
-        \enquote{??} until you include them again.
-  \item Use \enquote{Fast [draft]} compile mode in Overleaf (Menu~$\rightarrow$ Compile
-        mode), which skips images.
-  \item Keep figures as PDF or reasonably sized PNG/JPEG files: a 20~MB photograph
-        slows down every compilation.
-  \item Compile locally with \texttt{latexmk}, where there is no time limit, or ask your
+  \item leave out the chapters you are not working on by commenting out their
+        \verb|\input| lines in \texttt{main.tex} (references to them show \enquote{??}
+        until you include them again);
+  \item use the \enquote{Fast [draft]} compile mode of Overleaf (Menu~$\rightarrow$
+        Compile mode), which skips images;
+  \item keep figures as PDF or reasonably sized PNG/JPEG files;
+  \item compile locally with \texttt{latexmk}, where there is no time limit, or ask your
         university whether it provides Overleaf Professional accounts.
 \end{itemize}
 
@@ -225,22 +241,22 @@ time out, the following tips help:
 A thesis is similar to a book, so its content is organised in several levels with a
 hierarchical numbering, which you can see in the table of contents. The usual levels are:
 
-\begin{enumerate}[label={}, leftmargin=1em]
+\begin{itemize}
   \item 1. Chapter (\verb|\chapter{Title}|)
-  \begin{enumerate}[label={}, leftmargin=1.5em]
+  \begin{itemize}
     \item 1.1. Section (\verb|\section{Title}|)
-    \begin{enumerate}[label={}, leftmargin=1.5em]
+    \begin{itemize}
       \item 1.1.1. Subsection (\verb|\subsection{Title}|)
-      \begin{enumerate}[label={}, leftmargin=1.5em]
+      \begin{itemize}
         \item 1.1.1.1. Subsubsection (\verb|\subsubsection{Title}|)
-      \end{enumerate}
-    \end{enumerate}
-  \end{enumerate}
-\end{enumerate}
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
 
-More than four levels are not recommended. Subsubsections are numbered but, to keep the table
-of contents short, they are not listed in it; add \verb|\setcounter{tocdepth}{3}| to
-\texttt{config.tex} to include them.
+More than four levels are not recommended. Subsubsections are numbered but, to keep the
+table of contents short, they are not listed in it. To include them, add the following line
+to \texttt{config.tex}: \verb|\setcounter{tocdepth}{3}|.
 
 \subsection{Chapters}\label{sec:chapters}
 
@@ -273,31 +289,32 @@ never starts immediately after the title of its chapter.
 
 \subsection{Cross-references}\label{sec:cross-references}
 
-Referring to other parts of the document (chapters, sections, figures, tables, equations\dots)
-takes two steps:
+Referring to other parts of the document (chapters, sections, figures, tables,
+equations\dots) takes two steps:
 
 \begin{enumerate}
   \item Put a label right after the element, with \verb|\label{key}|. Using a prefix that
         identifies the type of element (\texttt{ch:}, \texttt{sec:}, \texttt{fig:},
         \texttt{tab:}, \texttt{eq:}, \texttt{lst:}, \texttt{alg:}) makes keys easier to
         remember.
-  \item Refer to it with \verb|\cref{key}|, which inserts both the type of element and its
-        number, e.g.\ \enquote{\cref{sec:chapters}}. Use \verb|\Cref| at the beginning of a
-        sentence.
+  \item Refer to it with \verb|\autoref{key}|, which inserts both the type of element and its
+        number, e.g.\ \enquote{\autoref{sec:chapters}}, or with \verb|\ref{key}|, which
+        inserts only the number.
 \end{enumerate}
 
-The \verb|\nameref| command inserts the title of the element and \verb|\cpageref| its page.
+The \verb|\nameref| command inserts the title of the element and \verb|\pageref| its page.
 For example\footnote{The \texttt{\textasciitilde} character is a non-breaking space: it
 keeps the words on both sides on the same line.}:
 
 \begin{lstlisting}[language={[LaTeX]TeX}, caption={Cross-references.}, label=lst:refs]
-\Cref{sec:chapters}, \nameref{sec:chapters}, on \cpageref{sec:chapters},
+\autoref{sec:chapters}, \nameref{sec:chapters}, on page~\pageref{sec:chapters},
 explains how to split the thesis into chapters.
 \end{lstlisting}
 
-produces: \enquote{\Cref{sec:chapters}, \nameref{sec:chapters}, on \cpageref{sec:chapters},
-explains how to split the thesis into chapters.} All references are hyperlinks in the PDF and
-are updated automatically when the document changes.
+produces: \enquote{\autoref{sec:chapters}, \nameref{sec:chapters}, on
+page~\pageref{sec:chapters}, explains how to split the thesis into chapters.} All
+references are hyperlinks in the PDF and are updated automatically when the document
+changes.
 
 \section{Text formatting}\label{sec:formatting}
 
@@ -330,8 +347,8 @@ text, do not abuse them.
 Lists make enumerations and procedures with several steps easier to read. Use a numbered
 list (\texttt{enumerate}) when the order matters, and a bulleted list (\texttt{itemize})
 otherwise. In \LaTeX{} lists are \emph{environments}: blocks of content that start with
-\verb|\begin{name}| and end with \verb|\end{name}|. Each element starts with \verb|\item|, as
-shown in \cref{lst:itemize}. Lists can be nested, and the indentation, bullets and
+\verb|\begin{name}| and end with \verb|\end{name}|. Each element starts with \verb|\item|,
+as shown in \autoref{lst:itemize}. Lists can be nested, and the indentation, bullets and
 numbering adjust automatically.
 
 \begin{lstlisting}[language={[LaTeX]TeX}, caption={A bulleted list with two items.}, label=lst:itemize]
@@ -350,10 +367,10 @@ screenshots, photographs\dots{} Keep the following rules in mind:
   \item Every figure has a number and a \emph{caption} that describes clearly what it shows.
         A long caption is not a problem.
   \item Every figure must be referred to from the text (\enquote{as shown in
-        \cref{fig:learning-curves}\dots}). A figure that is not mentioned should not be
+        \autoref{fig:learning-curves}\dots}). A figure that is not mentioned should not be
         there.
   \item \textbf{Every figure taken or adapted from another source must indicate its origin}
-        and comply with its licence (see \cref{sec:quotes}). Figures without a source are
+        and comply with its licence (see \autoref{sec:quotes}). Figures without a source are
         assumed to be your own.
   \item Figures must be legible: their text should be roughly the size of the caption, and
         they should never look blurry or pixelated.
@@ -372,8 +389,8 @@ chapter are produced by \texttt{figures/src/example\_figures.py}.
 
 Figures are inserted with \verb|\includegraphics| inside a \texttt{figure} environment, which
 also contains the \verb|\caption| and the \verb|\label|. Set the size of the image relative
-to the width of the text, e.g.\ \texttt{width=0.8\textbackslash textwidth}. \Cref{lst:figure} produces
-\cref{fig:learning-curves}.
+to the width of the text, e.g.\ \texttt{width=0.8\textbackslash textwidth}.
+\autoref{lst:figure} produces \autoref{fig:learning-curves}.
 
 \begin{lstlisting}[language={[LaTeX]TeX}, caption={Inserting a figure.}, label=lst:figure]
 \begin{figure}[htbp]
@@ -398,57 +415,34 @@ The optional argument \texttt{[htbp]} lets \LaTeX{} place the figure \emph{here}
 Do not fight this behaviour: floats moving to the next page are normal, and you just refer
 to them by number.
 
-\subsection{Subfigures}\label{sec:subfigures}
+\subsection{Several images in one figure}\label{sec:subfigures}
 
-Several related images can be grouped in a single figure with the \texttt{subfigure}
-environment, each with its own caption and label, as in \cref{fig:subfigures}. You can
-refer to the whole figure or to each part, e.g.\ \cref{fig:roc}.
+Related images can be placed side by side in a single figure by putting each one in a
+\texttt{minipage}, as in \autoref{fig:subfigures}. Label each part in the caption, (a), (b),
+etc., so that the text can refer to them.
 
 \begin{figure}[htbp]
   \centering
-  \begin{subfigure}[b]{0.45\textwidth}
+  \begin{minipage}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{example-roc-curve}
-    \caption{ROC curves.}
-    \label{fig:roc}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{example-roc-curve}\par\small (a)
+  \end{minipage}\hfill
+  \begin{minipage}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{example-confusion-matrix}
-    \caption{Confusion matrix of the proposed model.}
-    \label{fig:confusion}
-  \end{subfigure}
-  \caption{Example of a figure with two subfigures.}
+    \includegraphics[width=\textwidth]{example-confusion-matrix}\par\small (b)
+  \end{minipage}
+  \caption{Evaluation of the proposed model: (a) ROC curves; (b) confusion matrix.}
   \label{fig:subfigures}
 \end{figure}
 
-\subsection{Diagrams drawn with TikZ}\label{sec:tikz}
+\subsection{Diagrams}\label{sec:diagrams}
 
-Diagrams can also be drawn directly in \LaTeX{} with the TikZ package, so that their fonts
-match the text exactly. \Cref{fig:pipeline} is an example. Alternatively, draw diagrams with
-tools such as draw.io (\url{https://app.diagrams.net}) or PlantUML
-(\url{https://plantuml.com}) and export them as PDF.
-
-\begin{figure}[htbp]
-  \centering
-  \begin{tikzpicture}[
-      node distance=0.6cm,
-      box/.style={draw=tfmaccent, fill=tfmaccent!8, rounded corners=2pt, align=center,
-                  minimum height=1cm, minimum width=2.9cm, font=\small},
-      arrow/.style={-{Stealth[length=2.5mm]}, thick, tfmaccent}]
-    \node[box] (data) {Raw data};
-    \node[box, right=of data] (prep) {Pre-processing};
-    \node[box, right=of prep] (model) {Model training};
-    \node[box, right=of model] (eval) {Evaluation};
-    \draw[arrow] (data) -- (prep);
-    \draw[arrow] (prep) -- (model);
-    \draw[arrow] (model) -- (eval);
-    \draw[arrow, dashed] (eval.south) -- ++(0,-0.7) -| node[pos=0.25, below=1pt,
-      font=\footnotesize\itshape, text=tfmgray] {hyperparameter tuning} (model.south);
-  \end{tikzpicture}
-  \caption{A typical machine learning pipeline drawn with TikZ.}
-  \label{fig:pipeline}
-\end{figure}
+Diagrams of a system (architecture, workflows, UML, entity--relationship\dots) are best drawn
+with a dedicated tool and exported as PDF: for example draw.io
+(\url{https://app.diagrams.net}) or PlantUML (\url{https://plantuml.com}), which defines
+diagrams as text files that can be kept under version control. Simple charts can also be
+built with ordinary \LaTeX{} commands: the Gantt chart of \autoref{fig:gantt}, in
+\autoref{ch:methods}, is just a table with coloured rules.
 
 \section{Tables}\label{sec:tables}
 
@@ -457,30 +451,29 @@ figures apply to tables too: every table has a number, a caption and a reference
 text. In addition:
 
 \begin{itemize}
-  \item The caption of a table goes \emph{above} it (the template does it automatically
-        when \verb|\caption| is written before the \texttt{tabular}).
+  \item The caption of a table goes \emph{above} it: write \verb|\caption| before the
+        \texttt{tabular}.
   \item All tables share the same format, with three horizontal rules (\verb|\toprule|,
         \verb|\midrule| and \verb|\bottomrule| from the \texttt{booktabs} package), column
         headings in bold and no vertical lines.
-  \item Numbers are aligned on the decimal point and reported with a sensible number of
-        decimal places.
+  \item Numbers are aligned to the right (or on the decimal point) and reported with a
+        sensible and consistent number of decimal places.
 \end{itemize}
 
 Tables are created with the \texttt{tabular} environment inside a \texttt{table} float. The
 argument of \texttt{tabular} gives the alignment of each column: \texttt{l} (left),
-\texttt{c} (centre), \texttt{r} (right) or \texttt{p\{5cm\}} (fixed width with line wrapping).
-The \texttt{tabularx} environment adds the \texttt{X} column type, which takes all the
-remaining width, very convenient for columns with long text. Columns are separated with
-\verb|&| and rows end with \verb|\\|. \Cref{lst:table} produces \cref{tab:example}.
+\texttt{c} (centre), \texttt{r} (right) or \texttt{p\{5cm\}} (fixed width with line
+wrapping, useful for columns with long text). Columns are separated with \verb|&| and rows
+end with \verb|\\|. \autoref{lst:table} produces \autoref{tab:example}.
 
 \begin{lstlisting}[language={[LaTeX]TeX}, caption={Creating a table.}, label=lst:table]
 \begin{table}[htbp]
   \centering
   \caption{Datasets used in the experiments.}
   \label{tab:example}
-  \begin{tabular}{@{}l r r S[table-format=2.1]@{}}
+  \begin{tabular}{@{}l r r r@{}}
     \toprule
-    \textbf{Dataset} & \textbf{Instances} & \textbf{Features} & {\textbf{Missing (\%)}} \\
+    \textbf{Dataset} & \textbf{Instances} & \textbf{Features} & \textbf{Missing (\%)} \\
     \midrule
     Hospital A & 12,480 & 54  & 3.2  \\
     Hospital B &  8,915 & 54  & 11.7 \\
@@ -494,9 +487,9 @@ remaining width, very convenient for columns with long text. Columns are separat
   \centering
   \caption{Datasets used in the experiments.}
   \label{tab:example}
-  \begin{tabular}{@{}l r r S[table-format=2.1]@{}}
+  \begin{tabular}{@{}l r r r@{}}
     \toprule
-    \textbf{Dataset} & \textbf{Instances} & \textbf{Features} & {\textbf{Missing (\%)}} \\
+    \textbf{Dataset} & \textbf{Instances} & \textbf{Features} & \textbf{Missing (\%)} \\
     \midrule
     Hospital A & 12,480 & 54  & 3.2  \\
     Hospital B &  8,915 & 54  & 11.7 \\
@@ -505,13 +498,10 @@ remaining width, very convenient for columns with long text. Columns are separat
   \end{tabular}
 \end{table}
 
-The \texttt{S} column type of the \texttt{siunitx} package aligns numbers on the decimal
-point, as in the last column of \cref{tab:example}; headings in \texttt{S} columns must be
-enclosed in braces. The same package typesets units consistently: \verb|\SI{8}{\giga\byte}|
-gives \SI{8}{\giga\byte} and \verb|\num{0.05}| gives \num{0.05}. \Cref{tab:results} in
-\cref{ch:results} shows a complete results table, and \cref{tab:hardware} shows a table
-stored in its own file (\texttt{tables/hardware-requirements.tex}) and included with
-\verb|\input|, which is handy for long tables or tables generated by a program.
+\autoref{tab:results} in \autoref{ch:results} shows a complete results table, and
+\autoref{tab:hardware} shows a table stored in its own file
+(\texttt{tables/hardware-requirements.tex}) and included with \verb|\input|, which is handy
+for long tables or tables generated by a program.
 
 \section{Equations}\label{sec:equations}
 
@@ -521,23 +511,22 @@ stored in its own file (\texttt{tables/hardware-requirements.tex}) and included 
   \item \emph{Inline} expressions, within a paragraph, are delimited by dollar signs:
         \texttt{\$f(n) = n\textasciicircum 2 + 1\$} produces $f(n) = n^2 + 1$.
   \item \emph{Displayed} equations, on their own line, numbered and labelled so that they
-        can be referenced. They use the \texttt{equation} environment, or \texttt{align}
-        for several aligned equations.
+        can be referenced. They use the \texttt{equation} environment.
 \end{itemize}
 
-\Cref{lst:equation} produces \cref{eq:cross-entropy}, the binary cross-entropy loss.
+\autoref{lst:equation} produces \autoref{eq:cross-entropy}, the binary cross-entropy loss.
 
 \begin{lstlisting}[language={[LaTeX]TeX}, caption={A displayed equation.}, label=lst:equation]
 \begin{equation}
-  \mathcal{L}(\bm{\theta}) = -\frac{1}{N} \sum_{i=1}^{N} \left[ y_i \log \hat{y}_i
-                             + (1 - y_i) \log (1 - \hat{y}_i) \right]
+  \mathcal{L}(\theta) = -\frac{1}{N} \sum_{i=1}^{N} \left[ y_i \log \hat{y}_i
+                        + (1 - y_i) \log (1 - \hat{y}_i) \right]
   \label{eq:cross-entropy}
 \end{equation}
 \end{lstlisting}
 
 \begin{equation}
-  \mathcal{L}(\bm{\theta}) = -\frac{1}{N} \sum_{i=1}^{N} \left[ y_i \log \hat{y}_i
-                             + (1 - y_i) \log (1 - \hat{y}_i) \right]
+  \mathcal{L}(\theta) = -\frac{1}{N} \sum_{i=1}^{N} \left[ y_i \log \hat{y}_i
+                        + (1 - y_i) \log (1 - \hat{y}_i) \right]
   \label{eq:cross-entropy}
 \end{equation}
 
@@ -549,27 +538,29 @@ questions about mathematical notation.
 
 \section{Algorithms}\label{sec:algorithms}
 
-Algorithms that are used or proposed should be described in pseudocode, with the same syntax
-and format throughout the thesis. The \texttt{algorithm2e} package provides the
+Algorithms that are used or proposed should be described in pseudocode, with the same
+syntax and format throughout the thesis. The \texttt{algorithm2e} package provides the
 \texttt{algorithm} environment, with its own caption and label, and commands for
-conditionals, loops, etc. \Cref{lst:algorithm} produces \cref{alg:gradient-descent}.
+conditionals, loops, etc. \autoref{lst:algorithm} produces \autoref{alg:gradient-descent}.
+If your thesis contains algorithms, uncomment \verb|\listofalgorithmsintoc| in
+\texttt{main.tex} to add the List of Algorithms.
 
 \begin{algorithm}[htbp]
   \caption{Mini-batch gradient descent.}
   \label{alg:gradient-descent}
   \KwIn{Training set $\mathcal{D}$, learning rate $\eta$, number of epochs $E$}
-  \KwOut{Trained parameters $\bm{\theta}$}
-  Initialise $\bm{\theta}$ randomly\;
+  \KwOut{Trained parameters $\theta$}
+  Initialise $\theta$ randomly\;
   \For{$e \leftarrow 1$ \KwTo $E$}{
     Shuffle $\mathcal{D}$\;
     \ForEach{mini-batch $\mathcal{B} \subset \mathcal{D}$}{
-      $\bm{\theta} \leftarrow \bm{\theta} - \eta \, \nabla_{\bm{\theta}} \mathcal{L}(\bm{\theta}; \mathcal{B})$\;
+      $\theta \leftarrow \theta - \eta \, \nabla_{\theta} \mathcal{L}(\theta; \mathcal{B})$\;
     }
     \If{the validation loss has not improved for 10 epochs}{
       \textbf{break}\;
     }
   }
-  \Return{$\bm{\theta}$}\;
+  \Return{$\theta$}\;
 \end{algorithm}
 
 \begin{lstlisting}[language={[LaTeX]TeX}, caption={Describing an algorithm.}, label=lst:algorithm]
@@ -577,18 +568,18 @@ conditionals, loops, etc. \Cref{lst:algorithm} produces \cref{alg:gradient-desce
   \caption{Mini-batch gradient descent.}
   \label{alg:gradient-descent}
   \KwIn{Training set $\mathcal{D}$, learning rate $\eta$, number of epochs $E$}
-  \KwOut{Trained parameters $\bm{\theta}$}
-  Initialise $\bm{\theta}$ randomly\;
+  \KwOut{Trained parameters $\theta$}
+  Initialise $\theta$ randomly\;
   \For{$e \leftarrow 1$ \KwTo $E$}{
     Shuffle $\mathcal{D}$\;
     \ForEach{mini-batch $\mathcal{B} \subset \mathcal{D}$}{
-      $\bm{\theta} \leftarrow \bm{\theta} - \eta \, \nabla_{\bm{\theta}} \mathcal{L}(\bm{\theta}; \mathcal{B})$\;
+      $\theta \leftarrow \theta - \eta \, \nabla_{\theta} \mathcal{L}(\theta; \mathcal{B})$\;
     }
     \If{the validation loss has not improved for 10 epochs}{
       \textbf{break}\;
     }
   }
-  \Return{$\bm{\theta}$}\;
+  \Return{$\theta$}\;
 \end{algorithm}
 \end{lstlisting}
 
@@ -602,9 +593,9 @@ small subset is usually enough.
 Besides pseudocode, a thesis may include listings of real code. All the listings in this
 chapter have been produced with the \texttt{lstlisting} environment of the
 \texttt{listings} package, which takes three main parameters: \texttt{language}, which
-enables syntax highlighting; \texttt{caption}; and \texttt{label}. \Cref{lst:python} shows a
-Python example. Complete source files can be included directly from disk, without copying
-their content, with the \verb|\lstinputlisting| command:
+enables syntax highlighting; \texttt{caption}; and \texttt{label}. \autoref{lst:python}
+shows a Python example. Complete source files can be included directly from disk, without
+copying their content, with the \verb|\lstinputlisting| command:
 
 \begin{lstlisting}[language={[LaTeX]TeX}, numbers=none]
 \lstinputlisting[language=Python, caption={...}, label=lst:...]{code/file.py}
@@ -623,40 +614,35 @@ print(f"F1 = {scores.mean():.3f} ± {scores.std():.3f}")
 The list of supported languages, and how to define new ones, can be found at
 \url{https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings}. Include only the code that
 helps to understand the thesis; the complete code belongs to a repository referenced from
-the text (see \cref{sec:reproducibility}).
+the text (see \autoref{sec:reproducibility}). If your thesis contains listings, uncomment
+\verb|\listoflistingsintoc| in \texttt{main.tex} to add the List of Listings.
 
 \section{Acronyms}\label{sec:acronyms}
 
-Acronyms are defined once in \texttt{frontmatter/acronyms.tex}, as in
-\cref{lst:acronym}, and used in the text with \verb|\gls{key}|.
-
-\begin{lstlisting}[language={[LaTeX]TeX}, caption={Defining an acronym.}, label=lst:acronym]
-\newacronym{gpu}{GPU}{graphics processing unit}
-\end{lstlisting}
-
-\noindent The first time an acronym is used, its long form is written followed by the short form in
-brackets; afterwards only the short form appears, and every acronym used is added to the
-List of Acronyms automatically. For example, the first \verb|\gls{ml}| of this chapter
-produces \enquote{\gls{ml}}, and the next one produces \enquote{\gls{ml}}. The plural is
-obtained with \verb|\glspl{key}|, as in \enquote{\glspl{gpu}}.
+Every acronym must be defined the first time it appears in the text, by writing its long
+form followed by the acronym in brackets, e.g.\ \enquote{machine learning (ML)}; from then on
+the acronym alone can be used. In addition, the template includes a List of Acronyms
+(\texttt{frontmatter/acronyms.tex}), a simple table in alphabetical order that helps the
+reader find the meaning of any acronym at a glance. Remove its \verb|\input| line in
+\texttt{main.tex} if you do not need it.
 
 \section{Citations and references}\label{sec:citations}
 
-During the thesis you will study books, scientific articles, theses, standards and web pages,
-and you may use definitions, data or figures taken from them. In all these cases it is
+During the thesis you will study books, scientific articles, theses, standards and web
+pages, and you may use definitions, data or figures taken from them. In all these cases it is
 essential to cite the source properly. Poor citation practice is one of the most common
 reasons for a lower grade, and plagiarism, even unintentional, can lead to failing the
 thesis.
 
 \subsection{Bibliographic references}\label{sec:bibliography}
 
-References are cited with \verb|\cite{key}|, where \texttt{key} is the identifier
-of the corresponding entry in \texttt{references.bib}. The process is:
+References are cited with \verb|\cite{key}|, where \texttt{key} is the identifier of the
+corresponding entry in \texttt{references.bib}. The process is:
 
 \begin{enumerate}
   \item Get the bibliographic data in BibTeX format: from Google Scholar (the
         \enquote{Cite} button, then \enquote{BibTeX}), from the publisher's page, from
-        \url{https://doi.org} (which returns BibTeX for any \gls{doi}), or from a reference
+        \url{https://doi.org} (which returns BibTeX for any DOI), or from a reference
         manager such as Zotero with the Better BibTeX extension, which keeps
         \texttt{references.bib} up to date automatically.
   \item Add the entry to \texttt{references.bib} and give it an identifier that is easy to
@@ -665,17 +651,17 @@ of the corresponding entry in \texttt{references.bib}. The process is:
 \end{enumerate}
 
 Each type of work has its own type of entry: \texttt{@article}, \texttt{@book},
-\texttt{@inproceedings}, \texttt{@thesis}, \texttt{@online}, \texttt{@software},
-\texttt{@dataset}\dots{} In general, every entry needs at least \texttt{author},
-\texttt{title} and \texttt{year} (or \texttt{date}); books also need the
-\texttt{publisher}; articles, the \texttt{journal}, \texttt{volume}, \texttt{number} and
-\texttt{pages}; web resources, the \texttt{url} and the date when you accessed them
-(\texttt{urldate}). Always add the \texttt{doi} when the work has one. Automatically
-generated entries are often incomplete or contain errors, so review them carefully.
-\Cref{lst:bibtex} shows four entries of different types, which you can also find in
-\texttt{references.bib}.
+\texttt{@inproceedings}, \texttt{@phdthesis}, \texttt{@mastersthesis},
+\texttt{@techreport}, \texttt{@misc}\dots{} In general, every entry needs at least
+\texttt{author}, \texttt{title} and \texttt{year}; books also need the \texttt{publisher};
+articles, the \texttt{journal}, \texttt{volume}, \texttt{number} and \texttt{pages}; web
+pages, software, datasets and laws are \texttt{@misc} entries with the \texttt{url} and a
+\texttt{note} with the date when you accessed them. Always add the \texttt{doi} when the
+work has one. Automatically generated entries are often incomplete or contain errors, so
+review them carefully. \autoref{lst:bibtex} shows four entries of different types, which you
+can also find in \texttt{references.bib}.
 
-\begin{lstlisting}[language={[LaTeX]TeX}, caption={BibLaTeX entries of different types.}, label=lst:bibtex]
+\begin{lstlisting}[language={[LaTeX]TeX}, caption={BibTeX entries of different types.}, label=lst:bibtex]
 @article{charte2020review,
   title   = {A Comprehensive and Didactic Review on Multilabel
              Learning Software Tools},
@@ -706,19 +692,18 @@ generated entries are often incomplete or contain errors, so review them careful
   year      = {2013},
   doi       = {10.1007/978-3-642-40846-5_16}
 }
-@online{charte2019distribution,
+@misc{charte2019distribution,
   author  = {Charte, Francisco},
   title   = {Cómo analizar la distribución de los datos con {R}},
   year    = {2019},
   url     = {https://fcharte.com/tutoriales/20170114-DistribucionDatosR/},
-  urldate = {2020-09-30},
-  langid  = {spanish}
+  note    = {Accessed 30 September 2020}
 }
 \end{lstlisting}
 
-With the entries ready, the paragraph in \cref{lst:citations} produces the text that follows
-it, and the complete references are added automatically, correctly formatted, to the
-References section at the end of the thesis. Only cited works appear there.
+With the entries ready, the paragraph in \autoref{lst:citations} produces the text that
+follows it, and the complete references are added automatically, correctly formatted, to
+the References chapter at the end of the thesis. Only cited works appear there.
 
 \begin{lstlisting}[language={[LaTeX]TeX}, caption={A paragraph citing several works.}, label=lst:citations]
 As explained in~\cite{charte2020review} and extended in the
@@ -733,16 +718,18 @@ the tutorial in~\cite{charte2019distribution}.
   can be put into practice by following the tutorial in~\cite{charte2019distribution}.
 \end{quotation}
 
-The citation style is chosen with the \texttt{bibstyle} class option (\cref{tab:options}).
-Numeric styles are common in engineering and computer science, while author--year styles
-such as APA are common in health and social sciences. Ask your supervisor which one is
-expected in your field. With author--year styles, use \verb|\textcite{key}| to cite the
-authors as part of the sentence, e.g.\ \enquote{\textcite{pedregosa2011scikit} showed
-that\dots}, and \verb|\parencite{key}| for citations in parentheses.
+The citation style is chosen with the \texttt{bibstyle} class option
+(\autoref{tab:options}). Numeric citations are common in engineering and computer science,
+while author--year citations are common in health and social sciences; ask your supervisor
+which one is expected in your field. The bibliography is processed by BibTeX through the
+\texttt{natbib} package, which also offers \verb|\citet{key}|, to cite the authors as part
+of the sentence (\enquote{\citet{pedregosa2011scikit} showed that\dots}), and
+\verb|\citep{key}| for citations in parentheses.
 
 \subsection{Quotations and third-party material}\label{sec:quotes}
 
-If, besides using a work as a source, you reproduce part of it literally, follow these rules:
+If, besides using a work as a source, you reproduce part of it literally, follow these
+rules:
 
 \begin{itemize}
   \item Only short fragments of a work can be quoted literally, usually no more than a
@@ -769,23 +756,21 @@ tools. Be honest, and never use the work of others without citing it.
 
 \section{Special characters}\label{sec:special-characters}
 
-Some characters have a special meaning in \LaTeX: \verb|\| starts commands, \verb|$| delimits
-mathematics, \verb|%| starts a comment, \verb|&| separates table columns, \verb|#| denotes
-parameters, \verb|_| and \verb|^| create subscripts and superscripts, and \verb|{ }| group
-content. To print them, precede them with a backslash: \verb|\%|, \verb|\$|, \verb|\&|,
-\verb|\#|, \verb|\_|, \verb|\{| and \verb|\}| produce \%, \$, \&, \#, \_, \{ and \}. The
-backslash itself is written with \verb|\textbackslash| (\textbackslash), because
-\verb|\\| means a line break. Accented letters such as á, é, ñ or ç can be typed directly.
-If you have trouble with any character, see
+Some characters have a special meaning in \LaTeX: \verb|\| starts commands, \verb|$|
+delimits mathematics, \verb|%| starts a comment, \verb|&| separates table columns, \verb|#|
+denotes parameters, \verb|_| and \verb|^| create subscripts and superscripts, and
+\verb|{ }| group content. To print them, precede them with a backslash: \verb|\%|,
+\verb|\$|, \verb|\&|, \verb|\#|, \verb|\_|, \verb|\{| and \verb|\}| produce \%, \$, \&, \#,
+\_, \{ and \}. The backslash itself is written with \verb|\textbackslash| (\textbackslash),
+because \verb|\\| means a line break. Accented letters such as á, é, ñ or ç can be typed
+directly. If you have trouble with any character, see
 \url{https://en.wikibooks.org/wiki/LaTeX/Special_Characters}.
 
 \section{Working with your supervisors}\label{sec:review}
 
-When you send a draft to your supervisors, compile it with the \texttt{review} option: every
-line is numbered, so comments such as \enquote{page 12, line 34} are unambiguous, and the
-watermark prevents a draft from being mistaken for the final version. While writing, you can
-leave notes for yourself or your supervisors with \verb|\todo{text}|, which appears in the
-margin\todo{This is a to-do note.}, or with \verb|\todo[inline]{text}|:
+While writing, you can leave notes for yourself or your supervisors with
+\verb|\todo{text}|, which is shown in the text\todo{This is a to-do note.}, or with
+\verb|\todo[inline]{text}|, which takes a paragraph of its own:
 
 \todo[inline]{This is an inline to-do note. All notes disappear with the \texttt{final}
 option.}
@@ -841,13 +826,13 @@ of a software system, a product or a solution for an organisation. Its usual cha
   \item \textbf{Planning and Budget}: time and cost planning of the project and the
         resources it needs; the methodology used to manage it (e.g.\ Scrum); the
         estimation of the size and effort of the software, from which the schedule (usually
-        a Gantt chart, see \cref{fig:gantt}) and the budget are derived; and the legal and
-        technical regulations followed.
+        a Gantt chart, see \autoref{fig:gantt}) and the budget are derived; and the legal
+        and technical regulations followed.
   \item \textbf{Requirements Analysis}: the interviews with the (real or hypothetical)
         users or clients, from which the functional and non-functional requirements are
-        identified, analysed, specified (use case diagrams, user stories, domain model\dots)
-        and validated, following the practices recommended in the ISO/IEC/IEEE 29148
-        standard.
+        identified, analysed, specified (use case diagrams, user stories, domain
+        model\dots) and validated, following the practices recommended in the
+        ISO/IEC/IEEE 29148 standard.
   \item \textbf{System Design}: the detailed design of the system core (architecture,
         package, class and sequence diagrams), its user interface (wireframes or mockups)
         and its data (entity--relationship diagrams or equivalent), including the
@@ -862,8 +847,8 @@ of a software system, a product or a solution for an organisation. Its usual cha
         operation, its dependencies on external hosting or services, and the operations
         needed to maintain it.
   \item \textbf{Conclusions and Future Work}, as described above.
-  \item \textbf{Installation and User Manuals}, usually as appendices, written for the final
-        users rather than for developers.
+  \item \textbf{Installation and User Manuals}, usually as appendices, written for the
+        final users rather than for developers.
 \end{enumerate}
 
 Projects of this type need diagrams of several kinds. Tools such as PlantUML, which define
@@ -883,17 +868,17 @@ highly. Without trying to be exhaustive, keep in mind the following:
         \textit{modelling}/\textit{modeling}, \textit{colour}/\textit{color}. Use a spell
         checker, such as the one integrated in Overleaf, set to the same variety.
   \item \textbf{Grammar and tense:} use the present tense for established knowledge and for
-        what the thesis contains (\enquote{\cref{ch:results} presents\dots}) and the past
+        what the thesis contains (\enquote{\autoref{ch:results} presents\dots}) and the past
         tense for what you did (\enquote{the data were collected\dots}). Avoid
         contractions (\textit{don't}, \textit{it's}) in formal writing.
   \item \textbf{Common pitfalls for Spanish speakers:} watch out for false friends:
         \textit{actually} means \enquote{en realidad} (not \enquote{actualmente}, which is
         \textit{currently}), \textit{eventually} means \enquote{finalmente}, and
         \textit{sensible} means \enquote{sensato}. Do not use \enquote{the} with general
-        plural nouns (\enquote{\textit{Patients} with diabetes\dots}, not \enquote{\textit{The}
-        patients\dots}), adjectives never take a plural \textit{-s}, and experiments are
-        \textit{conducted} or \textit{carried out}, not \textit{made}. Acronyms do take an
-        \textit{s} in the plural in English (\textit{GPUs}).
+        plural nouns (\enquote{\textit{Patients} with diabetes\dots}, not
+        \enquote{\textit{The} patients\dots}), adjectives never take a plural \textit{-s},
+        and experiments are \textit{conducted} or \textit{carried out}, not \textit{made}.
+        Acronyms do take an \textit{s} in the plural in English (\textit{GPUs}).
   \item \textbf{Vocabulary:} use precise, specialised terms, which show that you know the
         field, and vary your vocabulary to avoid repeating the same words. A thesis is a
         formal document: write \enquote{as described in\dots} rather than \enquote{as we
@@ -901,23 +886,25 @@ highly. Without trying to be exhaustive, keep in mind the following:
   \item \textbf{Structure:} the thesis as a whole, each chapter and each section must read
         as a sequence of connected ideas. Nothing is more confusing than a text in which
         each paragraph jumps to a different topic. Plan the content of each chapter and
-        section before writing it so that, as in good software design, cohesion is maximised
-        and coupling minimised.
+        section before writing it so that, as in good software design, cohesion is
+        maximised and coupling minimised.
   \item \textbf{Generative AI:} if you use AI tools to improve your writing, follow the
         rules of your university and declare their use (see
         \texttt{frontmatter/ai-statement.tex}). You remain the author and the person
         responsible for every sentence of the thesis.
 \end{itemize}
 
-One last piece of advice, completely outside the scope of these instructions: the best way to
-learn to write well is to read a lot, especially good scientific articles in your field and
-good literature.
+One last piece of advice, completely outside the scope of these instructions: the best way
+to learn to write well is to read a lot, especially good scientific articles in your field
+and good literature.
 
 \section{Getting this template}\label{sec:getting-template}
 
-This template is publicly available at
-\url{https://github.com/thisisjosepablo/TFMLatexTemplate}, where you can download the latest
-release, open it directly in Overleaf, report problems or contribute improvements, such as
+This template is publicly available on GitHub:
+\begin{center}
+  \url{https://github.com/thisisjosepablo/TFMLatexTemplate}
+\end{center}
+There you can download the latest release, open it directly in Overleaf, report problems or contribute improvements, such as
 settings that reproduce the style of your own university. It is released into the public
 domain under the CC0~1.0 licence, so you can use it however you like, without any condition,
 but also without any warranty.

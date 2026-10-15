@@ -14,31 +14,31 @@ personal data, the ethical and legal section is mandatory.
 \section{Work plan}\label{sec:work-plan}
 
 [Describe the methodology followed to organise the work and its time plan.
-\Cref{fig:gantt} shows an example of a Gantt chart drawn with the \texttt{pgfgantt}
-package.]
+\autoref{fig:gantt} shows a simple Gantt chart made with an ordinary table.]
 
 \begin{figure}[htbp]
   \centering
   \small
-  \begin{ganttchart}[
-      hgrid={*1{draw=black!10}}, vgrid={*1{draw=black!10}}, x unit=0.38cm, y unit chart=0.55cm,
-      title height=1, bar height=0.55, bar top shift=0.22,
-      bar/.append style={fill=tfmaccent!65, draw=tfmaccent},
-      milestone/.append style={fill=tfmaccent!90!black},
-      title label font=\scriptsize, bar label font=\footnotesize,
-      milestone label font=\footnotesize\itshape]{1}{24}
-    \gantttitle{Weeks}{24}\\
-    \gantttitlelist{1,...,24}{1}\\
-    \ganttbar{Literature review}{1}{5}\\
-    \ganttbar{Data collection and preparation}{4}{9}\\
-    \ganttbar{Method design and implementation}{8}{16}\\
-    \ganttbar{Experiments and evaluation}{14}{20}\\
-    \ganttbar{Writing the thesis}{12}{23}\\
-    \ganttmilestone{Submission}{23}
-  \end{ganttchart}
+  % Each bar is \gantt{first week}{number of weeks}; the chart spans 24 weeks
+  \newcommand{\gantt}[2]{\leavevmode
+    \rlap{\textcolor{black!8}{\rule[-0.1ex]{24\dimexpr0.33cm\relax}{1.6ex}}}%
+    \hspace*{\numexpr#1-1\relax\dimexpr0.33cm\relax}%
+    \textcolor{tfmaccent}{\rule[-0.1ex]{#2\dimexpr0.33cm\relax}{1.6ex}}}
+  \begin{tabular}{@{}l p{24\dimexpr0.33cm\relax}@{}}
+    \toprule
+    \textbf{Task} & \textbf{Weeks 1--24} \\
+    \midrule
+    Literature review                & \gantt{1}{5}  \\
+    Data collection and preparation  & \gantt{4}{6}  \\
+    Method design and implementation & \gantt{8}{9}  \\
+    Experiments and evaluation       & \gantt{14}{7} \\
+    Writing the thesis               & \gantt{12}{12} \\
+    \bottomrule
+  \end{tabular}
   \caption{Example time plan of the thesis.}
   \label{fig:gantt}
 \end{figure}
+
 
 \section{Data}\label{sec:data}
 
@@ -51,8 +51,8 @@ pre-processing. A table describing the variables is usually helpful.]
 
 \section{Experimental setup}\label{sec:setup}
 
-[Hardware and software configuration, hyperparameters, random seeds, validation
-strategy. \Cref{tab:hardware} is an example of a hardware requirements table.]
+[Hardware and software configuration, hyperparameters, random seeds and the
+validation strategy. \autoref{tab:hardware} is an example of a hardware requirements table.]
 
 \input{tables/hardware-requirements}
 
@@ -62,7 +62,7 @@ strategy. \Cref{tab:hardware} is an example of a hardware requirements table.]
 
 \section{Ethical and legal considerations}\label{sec:ethics}
 
-[If the work uses personal data, describe how the \gls{gdpr}~\cite{gdpr2016} and the
+[If the work uses personal data, describe how the General Data Protection Regulation (GDPR)~\cite{gdpr2016} and the
 Spanish Organic Law 3/2018 on the Protection of Personal Data and Guarantee of Digital
 Rights~\cite{lopdgdd2018} have been complied with: anonymisation or pseudonymisation,
 legal basis, informed consent, storage and access. Mention the approval of the ethics
@@ -71,5 +71,5 @@ committee, if needed, with its reference number.]
 \section{Reproducibility}\label{sec:reproducibility}
 
 [State where the code and, if possible, the data can be found (a public repository with a
-\gls{doi}, e.g.\ on Zenodo), the software versions used~\cite{pedregosa2011scikit} and any
+DOI, e.g.\ on Zenodo), the software versions used~\cite{pedregosa2011scikit} and any
 restriction on data access.]

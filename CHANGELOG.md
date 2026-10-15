@@ -4,6 +4,48 @@ All notable changes to this template are documented in this file. The format is
 based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 follows [Semantic Versioning](https://semver.org/).
 
+## [1.2.0] – 2026-10-15
+
+A first compilation from scratch is now about six times faster than in 1.0.0, so that
+the template fits within the compile time limit of Overleaf's free plan.
+
+### Changed
+- The bibliography is processed by **natbib + BibTeX** by default, which is much faster
+  than biblatex + Biber. biblatex is still available with the new `biblatex` class
+  option. `bibstyle` accepts `numeric-comp`, `numeric`, `ieee`, `authoryear`, `apa` or
+  the name of any BibTeX style. `references.bib` now uses BibTeX-compatible entries.
+- TikZ/pgfgantt, algorithm2e and pdfpages are only loaded with the new `tikz`,
+  `algorithms` and `pdfpages` class options (pdfpages is loaded automatically when an
+  official cover is set). The Gantt chart example has moved to the user guide.
+- The `glossaries`, `todonotes` and `tcolorbox` packages have been replaced by small
+  built-in implementations with the same commands (`\newacronym`, `\gls`, `\glspl`,
+  `\acrshort`…, `\todo`, the `guidance` environment). This also avoids loading
+  `datatool`, which is very slow in TeX Live 2026.
+- The cover's colour band is drawn without TikZ.
+
+## [2.0.0] – 2026-10-15
+
+### Changed
+- **The class now uses exactly the same packages as the original template** by Francisco
+  Charte: `babel`, `inputenc`, `fontenc`, `geometry`, `setspace`, `fancyhdr`, `helvet`,
+  `wallpaper`, `textpos`, `etoolbox`, `natbib`, `csquotes`, `hyperref`, `booktabs`,
+  `algorithm2e`, `listings` and `xcolor`. Everything else is plain LaTeX. A full compilation
+  takes about half the time of v1.1.0.
+- Bibliography with natbib + BibTeX (`bibstyle=numeric|authoryear`) instead of biblatex + Biber.
+- Cross-references with `\autoref` instead of `cleveref`.
+- Default typeface: Helvetica (`font=sans`, same metrics as Arial), as in the original
+  template; `font=serif` gives Computer Modern.
+- The official PDF cover is placed with `wallpaper`, as in the original template.
+- The list of acronyms is a simple table in `frontmatter/acronyms.tex`.
+- Gantt chart, subfigures, tables and the SDG table are built with plain LaTeX.
+
+### Removed
+- Options `review`, `modern` font, `biblatex`, `tikz`, `algorithms`, `pdfpages` and
+  LuaLaTeX support, together with the packages they needed (TikZ, pgfgantt, tcolorbox,
+  todonotes, lineno, siunitx, glossaries, cleveref, titlesec, caption, subcaption,
+  tabularx, enumitem, microtype, newtx…). `algorithm2e` is always available.
+- The `latexmkrc` file, no longer needed.
+
 ## [1.1.0] – 2026-10-15
 
 ### Changed

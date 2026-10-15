@@ -1,5 +1,5 @@
 % !TeX program = pdflatex
-% !BIB program = biber
+% !BIB program = bibtex
 % !TeX spellcheck = en_GB
 %% ===========================================================================
 %%  Master's Thesis (TFM) LaTeX template for Spanish public universities
@@ -8,28 +8,21 @@
 %%  1. Choose the class options below.
 %%  2. Fill in your data in config.tex.
 %%  3. Write your chapters in chapters/ and your references in references.bib.
-%%  Compile with pdfLaTeX (or LuaLaTeX) + Biber, e.g. `latexmk main.tex`.
+%%  Compile with pdfLaTeX + BibTeX, e.g. `latexmk -pdf main.tex`.
 %% ===========================================================================
-
-% Optional: produce a PDF/A-2b file, required by some institutional
-% repositories (needs LaTeX 2023 or newer; uncomment to use).
-% \DocumentMetadata{pdfstandard=a-2b, lang=en-GB}
 
 \documentclass[
   % print,                 % two-sided layout for a printed and bound copy
   % final,                 % hide the guidance boxes and the to-do notes
-  % review,                % line numbers + DRAFT watermark for your supervisors
-  font=serif,              % serif | sans | modern
+  font=sans,               % sans (Helvetica, like Arial) | serif (Computer Modern)
   secondlanguage=spanish,  % spanish | catalan | valencian | galician | basque | none
-  bibstyle=numeric-comp,   % numeric-comp | ieee | apa | authoryear | ...
+  bibstyle=numeric,        % numeric [1] | authoryear (Author, 2024)
   % english=american,      % default: british
   % uppercase,             % chapter titles in CAPITALS
   % 11pt,                  % default: 12pt
 ]{tfmthesis}
 
-\input{config}                  % <-- your data
-\input{frontmatter/acronyms}    % <-- your acronyms
-\addbibresource{references.bib} % <-- your references
+\input{config}   % <-- your data
 
 \begin{document}
 
@@ -48,9 +41,10 @@
 \tableofcontentsintoc
 \listoffiguresintoc
 \listoftablesintoc
-\listofalgorithmsintoc                  % remove the lists you do not need
-\listoflistingsintoc
-\listofacronymsintoc
+% \listofalgorithmsintoc                % uncomment if your thesis has algorithms
+% \listoflistingsintoc                  % uncomment if your thesis has code listings
+\iftoggle{tfmTemplateGuide}{\listofalgorithmsintoc\listoflistingsintoc}{} % used by the guide
+\input{frontmatter/acronyms}            % list of acronyms (optional)
 
 %% --- Main matter (arabic page numbers) -------------------------------------
 \mainmatter
@@ -64,7 +58,7 @@
 \input{chapters/07-conclusions}
 
 %% --- Back matter ------------------------------------------------------------
-\bibliographyintoc
+\bibliographyintoc{references}          % <-- references.bib
 
 \appendix
 \input{appendices/A-sustainable-development-goals}

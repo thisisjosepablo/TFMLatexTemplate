@@ -6,12 +6,14 @@ State the general objective of the thesis from a high-level perspective, and bre
 down into specific, measurable objectives. A reader should get a clear idea of what has
 been done just by reading this chapter. If your work is hypothesis-driven, state the
 hypothesis or research questions first. The specific objectives will be revisited in
-\cref{ch:conclusions} to assess whether they have been achieved.
+\autoref{ch:conclusions} to assess whether they have been achieved.
 \end{guidance}
 
 \section{Research questions}\label{sec:research-questions}
 
-\begin{enumerate}[label=\textbf{RQ\arabic*.}, ref=RQ\arabic*, leftmargin=*]
+\begin{enumerate}
+  \renewcommand{\labelenumi}{\textbf{RQ\arabic{enumi}.}}
+  \renewcommand{\theenumi}{RQ\arabic{enumi}}
   \item\label{rq:1} [First research question]
   \item\label{rq:2} [Second research question]
 \end{enumerate}
@@ -22,7 +24,9 @@ hypothesis or research questions first. The specific objectives will be revisite
 
 \section{Specific objectives}\label{sec:specific-objectives}
 
-\begin{enumerate}[label=\textbf{O\arabic*.}, ref=O\arabic*, leftmargin=*]
+\begin{enumerate}
+  \renewcommand{\labelenumi}{\textbf{O\arabic{enumi}.}}
+  \renewcommand{\theenumi}{O\arabic{enumi}}
   \item\label{obj:1} [Review the state of the art on \dots]
   \item\label{obj:2} [Collect and prepare the data \dots]
   \item\label{obj:3} [Design and implement \dots]

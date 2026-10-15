@@ -1,11 +1,13 @@
 % ============================================================================
-%  references.bib -- your bibliography (biblatex + biber)
+%  references.bib -- your bibliography
+%  It is processed by BibTeX through the natbib package.
 %  Tips:
 %   * Export entries from Zotero (Better BibTeX), Mendeley, Google Scholar or the
 %     publisher's website, and always check that they are complete.
 %   * Include the DOI whenever it exists.
-%   * Web resources: @online with url and urldate (the date you accessed them).
-%   * Sources in other languages: add langid (e.g. langid = {spanish}).
+%   * Web pages, laws, software: the misc entry type, with url and a note with
+%     the date when you accessed them, e.g. note = {Accessed 30 September 2020}.
+%   * Keep {braces} around words whose capitals must be preserved: {Python}.
 % ============================================================================
 
 @article{charte2020review,
@@ -24,7 +26,7 @@
   author    = {Herrera, Francisco and Charte, Francisco and Rivera, Antonio J. and del Jesus, Mar{\'\i}a J.},
   year      = {2016},
   publisher = {Springer},
-  location  = {Cham},
+  address   = {Cham},
   isbn      = {978-3-319-41110-1},
   doi       = {10.1007/978-3-319-41111-8}
 }
@@ -41,12 +43,12 @@
   doi       = {10.1007/978-3-642-40846-5_16}
 }
 
-@online{charte2019distribution,
+@misc{charte2019distribution,
   author    = {Charte, Francisco},
   title     = {Cómo analizar la distribución de los datos con {R}},
   year      = {2019},
   url       = {https://fcharte.com/tutoriales/20170114-DistribucionDatosR/},
-  urldate   = {2020-09-30},
+  note      = {Accessed 30 September 2020},
   langid    = {spanish}
 }
 
@@ -64,32 +66,34 @@
   author    = {Van Rossum, Guido and Drake, Fred L.},
   year      = {2009},
   publisher = {CreateSpace},
-  location  = {Scotts Valley, CA}
+  address   = {Scotts Valley, CA}
 }
 
 @misc{gdpr2016,
   author       = {{European Parliament and Council of the European Union}},
   title        = {Regulation ({EU}) 2016/679 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data ({General Data Protection Regulation})},
-  howpublished = {Official Journal of the European Union, L 119},
-  date         = {2016-05-04},
-  pages        = {1--88},
+  howpublished = {Official Journal of the European Union, L 119, pp. 1--88},
+  month        = may,
+  year         = {2016},
   url          = {https://eur-lex.europa.eu/eli/reg/2016/679/oj}
 }
 
 @misc{lopdgdd2018,
   author       = {{Jefatura del Estado}},
-  title        = {Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales},
+  title        = {{Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales}},
   howpublished = {Boletín Oficial del Estado, no. 294},
-  date         = {2018-12-06},
+  month        = dec,
+  year         = {2018},
   url          = {https://www.boe.es/eli/es/lo/2018/12/05/3},
   langid       = {spanish}
 }
 
 @misc{rd822-2021,
   author       = {{Ministerio de Universidades}},
-  title        = {Real Decreto 822/2021, de 28 de septiembre, por el que se establece la organización de las enseñanzas universitarias y del procedimiento de aseguramiento de su calidad},
+  title        = {{Real Decreto 822/2021, de 28 de septiembre, por el que se establece la organización de las enseñanzas universitarias y del procedimiento de aseguramiento de su calidad}},
   howpublished = {Boletín Oficial del Estado, no. 233},
-  date         = {2021-09-29},
+  month        = sep,
+  year         = {2021},
   url          = {https://www.boe.es/eli/es/rd/2021/09/28/822},
   langid       = {spanish}
 }

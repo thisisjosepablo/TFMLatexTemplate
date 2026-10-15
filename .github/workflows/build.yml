@@ -20,27 +20,18 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: default (pdfLaTeX)
-            options: "font=serif, secondlanguage=spanish, bibstyle=numeric-comp"
-            lua: false
-          - name: print, sans, Catalan, IEEE, final
-            options: "print, final, font=sans, secondlanguage=catalan, bibstyle=ieee"
-            lua: false
-          - name: review, modern, Galician, APA
-            options: "review, font=modern, secondlanguage=galician, bibstyle=apa"
-            lua: false
-          - name: Basque, author-year, American, uppercase, 11pt
-            options: "secondlanguage=basque, bibstyle=authoryear, english=american, uppercase, 11pt"
-            lua: false
-          - name: No second language, final
-            options: "secondlanguage=none, final"
-            lua: false
-          - name: LuaLaTeX serif
-            options: "font=serif"
-            lua: true
-          - name: LuaLaTeX sans, Catalan, review
-            options: "font=sans, secondlanguage=catalan, review"
-            lua: true
+          - name: default
+            options: "font=sans, secondlanguage=spanish, bibstyle=numeric"
+          - name: print, serif, Catalan, author-year, final
+            options: "print, final, font=serif, secondlanguage=catalan, bibstyle=authoryear"
+          - name: Galician, uppercase, 11pt
+            options: "secondlanguage=galician, uppercase, 11pt"
+          - name: Basque, American English
+            options: "secondlanguage=basque, english=american"
+          - name: Valencian, print
+            options: "secondlanguage=valencian, print"
+          - name: no second language, serif, final
+            options: "secondlanguage=none, final, font=serif"
     steps:
       - uses: actions/checkout@v4
       - name: Set class options
@@ -57,7 +48,6 @@ jobs:
         uses: xu-cheng/latex-action@v4
         with:
           root_file: main.tex
-          latexmk_use_lualatex: ${{ matrix.lua }}
       - name: Check for undefined references and overfull boxes
         run: |
           if grep -E "There were undefined references|Citation .* undefined" main.log; then
@@ -80,7 +70,7 @@ jobs:
       - name: Package the template
         run: |
           zip -r TFMLatexTemplate.zip \
-            main.tex template-guide.tex config.tex tfmthesis.cls references.bib latexmkrc Makefile \
+            main.tex template-guide.tex config.tex tfmthesis.cls references.bib Makefile \
             LICENSE README.md frontmatter chapters appendices figures tables presets \
             -x "*.aux" "*.log"
           unzip -l TFMLatexTemplate.zip | tail -1
